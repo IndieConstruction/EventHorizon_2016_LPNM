@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
 	public string Letter;
 	public MeshFilter[] MeshesLetter;
-	
+    public int PlayerLife;
 	void Start(){
 	//Letter = "A";
 	}

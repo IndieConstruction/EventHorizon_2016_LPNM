@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 namespace EH.LPNM{
 public class HudManager : MonoBehaviour {
-
+        Player p;
 	public Text PlayerLifeText;
 	public Text ScoreText;
 	public Text BonusVoteText;
@@ -14,7 +14,11 @@ public class HudManager : MonoBehaviour {
 	//public bool isEnable = false;
 
 	void Start(){
-			ScoreText.text ="Score : " + 0;
+            p = FindObjectOfType<Player>();
+			ScoreText.text ="Score : " + gc.scoreCounter;
+            MultiplierText.text = "Multiplier : " + gc.Multiplier;
+            PlayerLifeText.text = "Life : " + p.PlayerLife;
+
 
 	}
 	void Awake(){
@@ -35,7 +39,7 @@ public class HudManager : MonoBehaviour {
 		BonusVoteText.text = "  " + BonusText  ;
 		PointDistanceText.text = "DistancePoint :  " + distanceResult;
 		MultiplierText.text = "Multiplier : "+ gc.Multiplier;
-		PlayerLifeText.text = "Life :" + gc.PlayerLife;
+		PlayerLifeText.text = "Life :" + p.PlayerLife;
 		
 	}
 

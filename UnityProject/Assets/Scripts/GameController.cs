@@ -6,14 +6,14 @@ public class GameController : MonoBehaviour {
 	Player p;
 	Letter l;
 	public int Level ;
-	public int PlayerLife;
+
 //	public GameObject[] ObstacleLettersPrefabs;
 //	public GameObject[] PlayerPrefabs;
 	Vector3 posPlayer;
 	public float GameTimer;
 	public int scoreCounter; // Punteggio del gioco
 	public int Score4NextLevel;
-	public string BonusScore; 
+	private string BonusScore; 
 	public float DistanceResult; // Distanza tra il punto di collisone e la lettera
 	public int Multiplier;// moltiplicatore generico
 //	public int ScoreCounter {
@@ -129,7 +129,7 @@ public class GameController : MonoBehaviour {
 				break;
 			case CollisionController.Vote.wrongLetter:
 				Multiplier = 0;
-				PlayerLife --;
+				p.PlayerLife --;
 				Hd.UpdateHud();
 				BonusScore = "WRONG LETTER!";
 
@@ -140,7 +140,7 @@ public class GameController : MonoBehaviour {
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
 		}
 
-        void MultiplierLimiter() {
+       public void MultiplierLimiter() {
             if (Multiplier >=10) {
                 Multiplier = 10;
             }
