@@ -107,15 +107,17 @@ public class GameController : MonoBehaviour {
 
 			switch (vote) {
 			case CollisionController.Vote.Perfect :
-				Multiplier = Multiplier +2;
-				scoreCounter = scoreCounter +1000* Multiplier;
+                Multiplier = Multiplier +2;
+                MultiplierLimiter();
+                scoreCounter = scoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
 				Hd.UpdateHud();
 
 				break;
 			case CollisionController.Vote.Good:
-				Multiplier = Multiplier +1;
-				scoreCounter = scoreCounter +500*Multiplier;
+                Multiplier = Multiplier +1;
+                MultiplierLimiter();
+                scoreCounter = scoreCounter +500*Multiplier;
 				BonusScore = "GOOD!";
 				Hd.UpdateHud();
 
@@ -138,6 +140,11 @@ public class GameController : MonoBehaviour {
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
 		}
 
+        void MultiplierLimiter() {
+            if (Multiplier >=10) {
+                Multiplier = 10;
+            }
+        }
 	}
 	}
 

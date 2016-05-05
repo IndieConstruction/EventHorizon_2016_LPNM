@@ -24,3 +24,14 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+*.prefs
+*.asset
+*.dwlt
+*.txt
+*.dll
+*.mdb
+*.stamp
+*.bin
+*.info
+*.resource
+*.log
