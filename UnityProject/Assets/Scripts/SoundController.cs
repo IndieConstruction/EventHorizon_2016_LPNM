@@ -15,6 +15,7 @@ public class SoundController : MonoBehaviour {
 	public AudioClip Good;
 	public AudioClip WrongLetter;
 	public AudioClip Poor;
+    public AudioClip NearBonus;
 	public Sounds DefaultSound;
 
 	void Awake () {
@@ -68,6 +69,11 @@ public class SoundController : MonoBehaviour {
 		PlaySound (Sounds.GameOver);
 	}
 
+      public void OnNearBonus()
+        {
+            PlaySound(Sounds.NearBonus);
+        }
+
 
 	// Use this for initialization
 	void Start () {
@@ -110,6 +116,9 @@ public class SoundController : MonoBehaviour {
 		case Sounds.WrongLetter:
 			audioSource.clip = WrongLetter;
 			break;
+        case Sounds.NearBonus:
+            audioSource.clip = NearBonus;
+             break;
 		}
 
 		audioSource.Play ();
@@ -123,7 +132,8 @@ public class SoundController : MonoBehaviour {
 		GameOver,
 		Win,
 		BonusTaken,
-		NextLevel
+		NextLevel,
+        NearBonus,
 	}
 }
 }
