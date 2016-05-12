@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 namespace EH.LPNM{
 public class GameController : MonoBehaviour {
 	#region
@@ -25,8 +26,9 @@ public class GameController : MonoBehaviour {
 		public static event GameEvent OnGoodCollision;
 		public static event GameEvent OnPoorCollision;
 		public static event GameEvent OnWrongLetter;
-	
-	#endregion
+
+        #endregion
+        public static string LevelName;
 	SoundController sc;
 	Player p;
 	Letter l;
@@ -69,7 +71,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 			sc = FindObjectOfType<SoundController>();
 		//	TimerXObstacle = 0;
-		//p = GetComponent<Player>();
+		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
 	}	
 	
@@ -92,15 +94,16 @@ public class GameController : MonoBehaviour {
             //TimerXObstacle = TimerXObstacle + Time.deltaTime;
         }
 
+    void FixedUpdate() {
+            ChangeScenes();
+    }
+
 
         //Spawn generale
-        public void Spawn(GameObject objectToSpawn, Vector3 positionToSpawn){
+    public void Spawn(GameObject objectToSpawn, Vector3 positionToSpawn){
 		Instantiate (objectToSpawn, positionToSpawn, objectToSpawn.transform.rotation);
 			
 	}
-	/// <summary>
-	/// Spawn Random degli Ostacoli
-	/// </summary>
 //	void RandomSpawnObstacle (){
 //		// sceglie un indice a caso nell'array LettersPrefabs
 //			int randomLetter = Random.Range(0, ObstacleLettersPrefabs.Length);
@@ -114,15 +117,26 @@ public class GameController : MonoBehaviour {
 //		Spawn (LetterToSpawn,spawnPosition);
 //
 //	}
-	public void PlayerLevelCompleted () {
-				if(scoreCounter<=0){
-				Application.LoadLevel("GameOver");
-
+    
+    /// <summary>
+    /// Funzione per cambiare la scena
+    /// </summary>
+	public void ChangeScenes () {
+				if(p.PlayerLife<=0){
+                SceneManager.LoadScene("GameOver");
+                // Application.LoadLevel("GameOver");
 				Debug.Log("GameOver");
 				}
-	
-	}
-		 enum OnCollisionPoint
+            if (scoreCounter >= Score4NextLevel)
+            {
+                SceneManager.LoadScene("LevelTwo");
+                // Application.LoadLevel("GameOver");
+                Debug.Log("LevelTwo");
+            }
+
+        }
+
+    enum OnCollisionPoint
 		{Perfect,
 			Good,
 			Ouch
