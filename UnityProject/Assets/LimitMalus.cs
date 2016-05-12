@@ -21,8 +21,11 @@ namespace EH.LPNM
 
         void OnTriggerEnter(Collider other)
         {
+            
             if (p != null)
             {
+                Debug.Log("collisione limit");
+
                 if (gc.Multiplier >= 1)
                     gc.Multiplier--;
                 else
