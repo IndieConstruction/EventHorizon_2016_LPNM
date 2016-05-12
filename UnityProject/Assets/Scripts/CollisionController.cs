@@ -7,6 +7,8 @@ public class CollisionController : MonoBehaviour {
 	public int DistanceX = 1; 
 	public int DistanceY = 2; 
 	
+    public 
+
 	void OnTriggerEnter(Collider other){
 			///
 			Player p = gameObject.GetComponent<Player>();
