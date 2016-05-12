@@ -2,11 +2,36 @@
 using System.Collections;
 namespace EH.LPNM{
 public class GameController : MonoBehaviour {
+	#region
+	public delegate void GameEvent();
+	//eventi base del gioco.
+	public static event GameEvent OnGameStart;
+	public static event GameEvent OnGameEnd;
+	public static event GameEvent OnLoadLevel;
+	public static GameEvent OnLoadLevelComplete;
+	public static event GameEvent OnPlayLevel;
+	public static event GameEvent OnLevelEnd;
+
+	public static event GameEvent OnGameWin;
+	// evento che fa partire il gioco/livello
+
+	public static event GameEvent OnGameOver;
+	public static event GameEvent OnNextLevel;
+	//eventi per i bonus
+	public static event GameEvent OnBonusTaken;
+
+		//eventi per la collisione delle lettere
+		public static event GameEvent OnPerfectCollision;
+		public static event GameEvent OnGoodCollision;
+		public static event GameEvent OnPoorCollision;
+		public static event GameEvent OnWrongLetter;
 	
+	#endregion
+	SoundController sc;
 	Player p;
 	Letter l;
 	public int Level ;
-
+	
 //	public GameObject[] ObstacleLettersPrefabs;
 //	public GameObject[] PlayerPrefabs;
 	Vector3 posPlayer;
@@ -42,20 +67,21 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
+			sc = FindObjectOfType<SoundController>();
 		//	TimerXObstacle = 0;
 		//p = GetComponent<Player>();
-			GameTimer = 0;
+		//	GameTimer = 0;
 	}	
 	
 	// Update is called once per frame
 	void Update () {
-			if(GameTimer <=60){
-				GameTimer = GameTimer + Time.deltaTime;
-			}
-			else {
-				Debug.Log("Tempo Scaduto");
-				GameTimer = 0;
-			}
+//			if(GameTimer <=60){
+//				GameTimer = GameTimer + Time.deltaTime;
+//			}
+//			else {
+//				Debug.Log("Tempo Scaduto");
+//				GameTimer = 0;
+			//}
             //if (TimerXObstacle >= CounterXObstacle)
             //{
             //    RandomSpawnObstacle();
@@ -91,6 +117,7 @@ public class GameController : MonoBehaviour {
 	public void PlayerLevelCompleted () {
 				if(scoreCounter<=0){
 				Application.LoadLevel("GameOver");
+
 				Debug.Log("GameOver");
 				}
 	
@@ -107,7 +134,8 @@ public class GameController : MonoBehaviour {
 
 			switch (vote) {
 			case CollisionController.Vote.Perfect :
-                Multiplier = Multiplier +2;
+				sc.GameController_OnPerfectCollision();
+				Multiplier = Multiplier +2;
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
@@ -115,19 +143,21 @@ public class GameController : MonoBehaviour {
 
 				break;
 			case CollisionController.Vote.Good:
+				sc.GameController_OnGoodCollision();
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +500*Multiplier;
 				BonusScore = "GOOD!";
 				Hd.UpdateHud();
-
 				break;
 			case CollisionController.Vote.Poor:
+				sc.GameController_OnPoorCollision();
 				Multiplier = 0;
 				BonusScore = "POOR!";
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.wrongLetter:
+				sc.GameController_OnWrongLetter();
 				Multiplier = 0;
 				p.PlayerLife --;
 				Hd.UpdateHud();
