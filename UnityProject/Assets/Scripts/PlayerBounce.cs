@@ -18,7 +18,7 @@ namespace EH.LPNM
                 toCenter = false;
 
             if (toCenter == true)
-                p.transform.Translate(target);
+                p.transform.Translate(-target.x,0,0);
             
         }
 
@@ -29,7 +29,8 @@ namespace EH.LPNM
                // float step = speed * Time.deltaTime;
          
                 Debug.Log("uscito dal limite");
-                 target = Vector3.Normalize(Vector3.MoveTowards(p.transform.position, this.transform.position, speed));
+                 target = Vector3.MoveTowards(p.transform.position, this.transform.position, speed).normalized;
+                Debug.Log("pos " + target);
                 //target=Vector3.n
                 toCenter = true;
             }
