@@ -27,10 +27,15 @@ namespace EH.LPNM
                 Debug.Log("collisione limit");
 
                 if (gc.Multiplier >= 1)
+                {
+                    Debug.Log("multiplier " + gc.Multiplier);
                     gc.Multiplier--;
+                }
                 else
+                {
+                    Debug.Log("life " + p.PlayerLife);
                     p.PlayerLife--;
-
+                }
             }
 
         }
