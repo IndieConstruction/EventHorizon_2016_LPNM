@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour {
 
 
         //Spawn generale
-    public void Spawn(GameObject objectToSpawn, Vector3 positionToSpawn){
+    public static void Spawn(GameObject objectToSpawn, Vector3 positionToSpawn){
 		Instantiate (objectToSpawn, positionToSpawn, objectToSpawn.transform.rotation);
 			
 	}
