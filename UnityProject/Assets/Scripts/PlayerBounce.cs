@@ -5,8 +5,8 @@ namespace EH.LPNM
     public class PlayerBounce : MonoBehaviour
     {
         Player p;
-        Vector3 target;
-        bool toCenter = false;
+        Transform target;
+        //bool toCenter = false;
         public float speed = 0.1f;
         void Start()
         {
@@ -14,11 +14,7 @@ namespace EH.LPNM
         }
         void Update()
         {
-            if (target == p.transform.position)
-                toCenter = false;
-
-            if (toCenter == true)
-                p.transform.Translate(target);
+           
             
         }
 
@@ -26,12 +22,14 @@ namespace EH.LPNM
         {
             if (p != null)
             {
-               // float step = speed * Time.deltaTime;
-         
+                float step = speed * Time.deltaTime;
                 Debug.Log("uscito dal limite");
-                 target = Vector3.Normalize(Vector3.MoveTowards(p.transform.position, this.transform.position, speed));
-                //target=Vector3.n
-                toCenter = true;
+                target.position = this.transform.position;
+                transform.position = Vector3.MoveTowards(p.transform.position, target.position, step);
+               // target = this.transform.position;
+               //transform.Translate(target);
+               //target=Vector3.n
+               //toCenter = true;
             }
         }
 
