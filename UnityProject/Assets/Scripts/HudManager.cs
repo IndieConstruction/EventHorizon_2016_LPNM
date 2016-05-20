@@ -34,8 +34,9 @@ public class HudManager : MonoBehaviour {
 	public void UpdateHud (){
 		ScoreText.text ="Score : " + gc.scoreCounter ;
 		MultiplierText.text = "Multiplier : "+ gc.Multiplier;
+            PlayerLifeText.text = "Life :" + p.PlayerLife;
 
-	}
+        }
 	
 	public void OnCollisionVote(string BonusText, float distanceResult){
 		BonusVoteText.text = "  " + BonusText  ;

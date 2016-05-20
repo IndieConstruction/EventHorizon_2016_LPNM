@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
 	private string BonusScore; 
 	public float DistanceResult; // Distanza tra il punto di collisone e la lettera
 	public int Multiplier;// moltiplicatore generico
+    public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
 //	public int ScoreCounter {
 //			get{return scoreCounter;}
 //			set{scoreCounter = value;
