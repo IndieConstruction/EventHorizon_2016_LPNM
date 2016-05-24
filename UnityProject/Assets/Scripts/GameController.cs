@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
         #endregion
         public static string LevelName;
 	SoundController sc;
+    SaveScore ScoreS;
 	Player p;
 	Letter l;
 	public int Level ;
@@ -43,6 +44,8 @@ public class GameController : MonoBehaviour {
 	private string BonusScore; 
 	public float DistanceResult; // Distanza tra il punto di collisone e la lettera
 	public int Multiplier;// moltiplicatore generico
+    public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
+    public string LoadLevel;
 //	public int ScoreCounter {
 //			get{return scoreCounter;}
 //			set{scoreCounter = value;
@@ -70,6 +73,7 @@ public class GameController : MonoBehaviour {
 
 	void Start () {
 			sc = FindObjectOfType<SoundController>();
+            ScoreS = FindObjectOfType<SaveScore>();
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -95,6 +99,7 @@ public class GameController : MonoBehaviour {
         }
 
     void FixedUpdate() {
+            if(p.PlayerLife<=0)
             ChangeScenes();
     }
 
@@ -122,18 +127,24 @@ public class GameController : MonoBehaviour {
     /// Funzione per cambiare la scena
     /// </summary>
 	public void ChangeScenes () {
-				if(p.PlayerLife<=0){
+            //	if(p.PlayerLife<=0){
+            if (scoreCounter >= Score4NextLevel)
+            {
+                ScoreS.Complete = true;
+                ScoreS.LoadLev = LoadLevel;
+            }
                 SceneManager.LoadScene("GameOver");
                 // Application.LoadLevel("GameOver");
 				Debug.Log("GameOver");
-				}
-            if (scoreCounter >= Score4NextLevel)
+
+				//}
+         /*   if (scoreCounter >= Score4NextLevel)
             {
                 SceneManager.LoadScene("LevelTwo");
                 // Application.LoadLevel("GameOver");
                 Debug.Log("LevelTwo");
             }
-
+            */
         }
 
     enum OnCollisionPoint

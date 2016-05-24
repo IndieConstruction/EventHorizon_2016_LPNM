@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 namespace EH.LPNM{
 public class HudManager : MonoBehaviour {
         Player p;
@@ -10,10 +12,13 @@ public class HudManager : MonoBehaviour {
 	public Text PointDistanceText;
 	public Text MultiplierText ;
 	public GameController gc;
+    public string Score;
+    public bool Over = false;
 	//public int scoreCounter;
 	//public bool isEnable = false;
 
 	void Start(){
+
             p = FindObjectOfType<Player>();
 			ScoreText.text ="Score : " + gc.scoreCounter;
             MultiplierText.text = "Multiplier : " + gc.Multiplier;
@@ -22,9 +27,6 @@ public class HudManager : MonoBehaviour {
 
 	}
 	void Awake(){
-		
-
-		
 	}
 	void Update () {
 //			if(gc.scoreCounter == 10)
@@ -34,8 +36,10 @@ public class HudManager : MonoBehaviour {
 	public void UpdateHud (){
 		ScoreText.text ="Score : " + gc.scoreCounter ;
 		MultiplierText.text = "Multiplier : "+ gc.Multiplier;
+            PlayerLifeText.text = "Life :" + p.PlayerLife;
+            Score = ScoreText.text;
 
-	}
+        }
 	
 	public void OnCollisionVote(string BonusText, float distanceResult){
 		BonusVoteText.text = "  " + BonusText  ;
@@ -45,6 +49,8 @@ public class HudManager : MonoBehaviour {
 		
 	}
 
-	}
+      
+
+    }
 }
 
