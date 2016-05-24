@@ -5,7 +5,7 @@ public class Letter : MonoBehaviour {
 
 	public GameController gc;
 	public string IDLetter ;
-	public float speed ;
+	//public float speed ;
 	// Use this for initialization
 	void Start () {
 			gc =FindObjectOfType<GameController>();

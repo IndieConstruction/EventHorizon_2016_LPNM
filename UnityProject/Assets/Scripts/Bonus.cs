@@ -43,7 +43,7 @@ namespace EH.LPNM
 		void OnTriggerEnter(Collider other) {
             float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
 
-            if (p != null && (Distance == TakeBonus))
+            if (p != null && Distance == TakeBonus)
             {
                 Debug.Log("Preso! "+ Vector3.Distance(this.transform.position, p.transform.position));
                 sc.HandleOnBonusTaken();
@@ -55,8 +55,9 @@ namespace EH.LPNM
             }
             else if (Distance==NearlyBonus)
             {
-                  sc.OnNearBonus();
+                sc.OnNearBonus();
                 Debug.Log("Quasi vicino "+ Vector3.Distance(this.transform.position, p.transform.position));
+				this.gameObject.SetActive(false);
             }               
 
         }
