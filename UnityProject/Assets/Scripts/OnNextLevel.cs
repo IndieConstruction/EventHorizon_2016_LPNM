@@ -6,11 +6,11 @@ public class OnNextLevel : MonoBehaviour {
 	
 
 	void OnTriggerEnter(Collider other){
-
-			if(gc.scoreCounter >= gc.Score4NextLevel ){
+            gc.ChangeScenes();
+			/* if(gc.scoreCounter >= gc.Score4NextLevel ){
 			Application.LoadLevel("LevelTwo");
 			Debug.Log("Nextlevel");
-	}
+               	}*/
 	}
 }
 }

@@ -28,7 +28,7 @@ namespace EH.LPNM
         void OnTriggerEnter(Collider other)
         {
             
-            if (p != null)
+            if (p != null&&other.gameObject==p.gameObject)
             {
 
                 Debug.Log("collisione limit");
