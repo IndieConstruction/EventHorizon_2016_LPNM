@@ -20,16 +20,19 @@ public class GameController : MonoBehaviour {
 	public static event GameEvent OnNextLevel;
 	//eventi per i bonus
 	public static event GameEvent OnBonusTaken;
+    public static event GameEvent IsMagnetic;
+    public static event GameEvent IsShield;
 
-		//eventi per la collisione delle lettere
-		public static event GameEvent OnPerfectCollision;
-		public static event GameEvent OnGoodCollision;
-		public static event GameEvent OnPoorCollision;
-		public static event GameEvent OnWrongLetter;
+    //eventi per la collisione delle lettere
+	public static event GameEvent OnPerfectCollision;
+	public static event GameEvent OnGoodCollision;
+	public static event GameEvent OnPoorCollision;
+	public static event GameEvent OnWrongLetter;
 
-        #endregion
-        public static string LevelName;
-	SoundController sc;
+    #endregion
+    public static string LevelName;
+
+    SoundController sc;
     SaveScore ScoreS;
 	Player p;
 	Letter l;
