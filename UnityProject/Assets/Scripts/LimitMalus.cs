@@ -22,7 +22,7 @@ namespace EH.LPNM
         void Update()
         {
             hd.UpdateHud();
-            UpdateTime(gc.CountCollider);
+            UpdateTime();
         }
 
         void OnTriggerEnter(Collider other)
@@ -33,9 +33,9 @@ namespace EH.LPNM
 
                 Debug.Log("collisione limit");
                 
-                if (countSave <= 0||first==true)
+                if (countSave <= 0)
                 {
-                    first = false;
+                    
                     countSave = gc.CountCollider;
 
                     if (gc.Multiplier >= 1)
@@ -60,7 +60,7 @@ namespace EH.LPNM
         /// Aggiorna la variabile countSave della classe LimitMalus sottraendole il deltaTime
         /// </summary>
         /// <param name="count"></param>
-        private void UpdateTime(float count)
+        private void UpdateTime()
         {
             countSave = (countSave - Time.deltaTime);
         }
