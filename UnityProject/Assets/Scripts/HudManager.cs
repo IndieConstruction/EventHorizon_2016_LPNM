@@ -12,6 +12,7 @@ public class HudManager : MonoBehaviour {
 	public Text PointDistanceText;
 	public Text MultiplierText ;
 	public GameController gc;
+    public HudGameOver HudGameOver;
     public string Score;
 	//public int scoreCounter;
 	//public bool isEnable = false;

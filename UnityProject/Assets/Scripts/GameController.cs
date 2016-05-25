@@ -136,9 +136,14 @@ public class GameController : MonoBehaviour {
                 ScoreS.Complete = true;
                 ScoreS.LoadLev = LoadLevel;
             }
-                SceneManager.LoadScene("GameOver");
-                // Application.LoadLevel("GameOver");
-				Debug.Log("GameOver");
+            Hd.HudGameOver.gameObject.SetActive(true);
+       /*     if (Time.timeScale == 1.0F)
+                Time.timeScale = 0F;
+            else
+                Time.timeScale = 1.0F;
+         */   
+            // Application.LoadLevel("GameOver");
+            Debug.Log("GameOver");
 
 				//}
          /*   if (scoreCounter >= Score4NextLevel)
