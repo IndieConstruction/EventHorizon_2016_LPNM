@@ -14,7 +14,6 @@ namespace EH.LPNM
         // Use this for initialization
         void Start()
         {
-            DontDestroyOnLoad(this);
             ScoreS = FindObjectOfType<SaveScore>();
             ScorePoint.text = ScoreS.Score;
             if (ScoreS.Complete == true)
