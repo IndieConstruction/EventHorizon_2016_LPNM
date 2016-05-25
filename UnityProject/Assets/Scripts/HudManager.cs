@@ -13,7 +13,6 @@ public class HudManager : MonoBehaviour {
 	public Text MultiplierText ;
 	public GameController gc;
     public string Score;
-    public bool Over = false;
 	//public int scoreCounter;
 	//public bool isEnable = false;
 

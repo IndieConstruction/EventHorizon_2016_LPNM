@@ -7,7 +7,7 @@ namespace EH.LPNM
         Player p;
         GameController gc;
         HudManager hd;
-
+        bool first = true;
         float countSave;
         // Use this for initialization
         void Start()
@@ -33,21 +33,20 @@ namespace EH.LPNM
 
                 Debug.Log("collisione limit");
                 
-                if (countSave <= 0)
+                if (countSave <= 0||first==true)
                 {
+                    first = false;
                     countSave = gc.CountCollider;
 
                     if (gc.Multiplier >= 1)
                     {
                         Debug.Log("multiplier " + gc.Multiplier);
                         gc.Multiplier--;
-
                     }
                     else
                     {
                         Debug.Log("life " + p.PlayerLife);
                         p.PlayerLife--;
-
                     }
                 }
                 else
