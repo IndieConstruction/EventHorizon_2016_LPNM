@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2a1ed8f0973380d4ab7936a8b9d2b13d
-timeCreated: 1464170502
+guid: dddb476260c3c204fa57034eb2539100
+timeCreated: 1464173804
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -131,7 +131,7 @@ ModelImporter:
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
