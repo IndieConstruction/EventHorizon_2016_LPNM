@@ -3,7 +3,7 @@ using System.Collections;
 namespace EH.LPNM{
 public class Letter : MonoBehaviour {
 
-	public GameController gc;
+	GameController gc;
 	public string IDLetter ;
 	//public float speed ;
 	// Use this for initialization

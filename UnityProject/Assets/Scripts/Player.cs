@@ -6,8 +6,9 @@ public class Player : MonoBehaviour {
 	public string Letter;
 	public MeshFilter[] MeshesLetter;
     public int PlayerLife;
-    //public Transform target;
-	void Start(){
+
+   void Start(){
+
 	Letter = "A";
 	}
 	void Update(){
@@ -61,13 +62,6 @@ public class Player : MonoBehaviour {
                     break;
             }
         }
-
-        //void ontriggerenter(Collider other){
-        //    if (other.tag == "PlayerBorder")
-        //    {
-        //        transform.LookAt(target);
-        //    }
-        //}
     }
 }
 	

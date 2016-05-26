@@ -3,11 +3,15 @@ using System.Collections;
 namespace EH.LPNM{
 public class CollisionController : MonoBehaviour {
 	
-	public GameController gc;
+	GameController gc;
 	public int DistanceX = 1; 
 	public int DistanceY = 2; 
 	
-    public 
+    void Awake() {
+
+            gc = FindObjectOfType<GameController>();
+
+        }
 
 	void OnTriggerEnter(Collider other){
 			///

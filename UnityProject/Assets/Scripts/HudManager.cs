@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 namespace EH.LPNM{
 public class HudManager : MonoBehaviour {
-        Player p;
+
+    Player p;
 	public Text PlayerLifeText;
 	public Text ScoreText;
 	public Text BonusVoteText;

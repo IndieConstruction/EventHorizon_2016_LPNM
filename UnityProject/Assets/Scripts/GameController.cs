@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
 
     #endregion
     public static string LevelName;
-
+    HudManager Hd;
     SoundController sc;
     SaveScore ScoreS;
 	Player p;
@@ -50,13 +50,6 @@ public class GameController : MonoBehaviour {
     public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
     public string LoadLevel;
     public bool Play=true;
-//	public int ScoreCounter {
-//			get{return scoreCounter;}
-//			set{scoreCounter = value;
-//				Hd.UpdateHud("Score :" +scoreCounter);
-//			}
-//		}
-	public HudManager Hd;
 	
 	//public Transform[] LettersSpawnPoints;
 	//public float CounterXObstacle;
@@ -76,6 +69,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
+        
+            Hd = FindObjectOfType < HudManager>();
 			sc = FindObjectOfType<SoundController>();
             ScoreS = FindObjectOfType<SaveScore>();
             StartPlay();
