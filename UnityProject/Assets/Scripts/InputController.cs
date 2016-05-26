@@ -68,52 +68,62 @@ namespace EH.LPNM{
 		
 	}
 	void ChangeShape(){
-		
-		if (Input.GetKeyUp (KeyCode.A)) {
-			p.Letter = ("A");
-			p.MeshChange("A");
-			Debug.Log(KeyCode.A.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.M)) {
-			p.Letter = ("M");
-			p.MeshChange(KeyCode.M.ToString());
-			Debug.Log(KeyCode.M.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.V)) {
-			p.Letter =("V");
-			p.MeshChange("V");
-			Debug.Log(KeyCode.V.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.W)) {
-			p.MeshChange(KeyCode.W.ToString());
-			Debug.Log(KeyCode.W.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.E)) {
-			p.MeshChange("E");
-			Debug.Log(KeyCode.E.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.S)) {
-			p.MeshChange(KeyCode.S.ToString());
-			Debug.Log(KeyCode.S.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.D)) {
-			p.MeshChange("D");
-			Debug.Log(KeyCode.D.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.Z)) {
-			p.MeshChange(KeyCode.Z.ToString());
-			Debug.Log(KeyCode.Z.ToString());
-			
-		}
-		if (Input.GetKeyUp (KeyCode.X)) {
-			p.Letter = ("X");
-			p.MeshChange("X");
-			Debug.Log(KeyCode.X.ToString());
-		}
-		if (Input.GetKeyUp (KeyCode.C)) {
-			p.MeshChange(KeyCode.C.ToString());
-			Debug.Log(KeyCode.C.ToString());
-		}
-	}
+
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                p.Letter = ("Q");
+                p.MeshChange("Q");
+                Debug.Log(KeyCode.Q.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                p.Letter = ("W");
+                p.MeshChange("W");
+                Debug.Log(KeyCode.W.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                p.Letter = ("E");
+                p.MeshChange("E");
+                Debug.Log(KeyCode.E.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                p.Letter = ("A");
+                p.MeshChange("A");
+                Debug.Log(KeyCode.A.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                p.Letter = ("S");
+                p.MeshChange("S");
+                Debug.Log(KeyCode.S.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                p.Letter = ("D");
+                p.MeshChange("D");
+                Debug.Log(KeyCode.D.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.Z))
+            {
+                p.Letter = ("Z");
+                p.MeshChange("Z");
+                Debug.Log(KeyCode.Z.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.X))
+            {
+                p.Letter = ("X");
+                p.MeshChange("X");
+                Debug.Log(KeyCode.X.ToString());
+            }
+            if (Input.GetKeyUp(KeyCode.C))
+            {
+                p.Letter = ("C");
+                p.MeshChange("C");
+                Debug.Log(KeyCode.C.ToString());
+            }
+
+        }
 }
 }
