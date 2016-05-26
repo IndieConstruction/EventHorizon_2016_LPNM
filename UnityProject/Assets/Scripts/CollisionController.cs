@@ -21,11 +21,11 @@ public class CollisionController : MonoBehaviour {
 			if (letter != null){
 			if(p.Letter == letter.IDLetter){
 
-				float distanceResult = Vector3.Distance(p.transform.position, letter.transform.position);
+				float distanceResult = Vector3.Distance(p.transform.position,letter.transform.position - letter.GetComponent<BoxCollider>().center);
 				Vote vote = calculate(distanceResult);
 					Debug.Log("Lettera è = ed è a distanza di : "  + distanceResult + "Punteggio è : " + vote);
 			}else {
-				float distanceResult = Vector3.Distance(p.transform.position, letter.transform.position);
+				float distanceResult = Vector3.Distance(p.transform.position, letter.transform.position - letter.GetComponent<BoxCollider>().center);
 				Vote vote = calculate(distanceResult);
 				gc.OnPointsToAdd(Vote.wrongLetter,distanceResult);
 				Debug.Log ("Lettera è sbagliata");
