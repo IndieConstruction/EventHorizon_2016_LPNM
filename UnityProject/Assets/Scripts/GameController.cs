@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour {
 	public int Multiplier;// moltiplicatore generico
     public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
     public string LoadLevel;
+    public bool Play=true;
 //	public int ScoreCounter {
 //			get{return scoreCounter;}
 //			set{scoreCounter = value;
@@ -77,6 +78,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 			sc = FindObjectOfType<SoundController>();
             ScoreS = FindObjectOfType<SaveScore>();
+            StartPlay();
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -102,8 +104,12 @@ public class GameController : MonoBehaviour {
         }
 
     void FixedUpdate() {
-            if(p.PlayerLife<=0)
-            ChangeScenes();
+            if (p.PlayerLife <= 0)
+            {
+                ChangeScenes();
+                StopPlay();
+                GameOverActive();
+            }
     }
 
 
@@ -136,13 +142,6 @@ public class GameController : MonoBehaviour {
                 ScoreS.Complete = true;
                 ScoreS.LoadLev = LoadLevel;
             }
-            Hd.HudGameOver.gameObject.SetActive(true);
-       /*     if (Time.timeScale == 1.0F)
-                Time.timeScale = 0F;
-            else
-                Time.timeScale = 1.0F;
-         */   
-            // Application.LoadLevel("GameOver");
             Debug.Log("GameOver");
 
 				//}
@@ -155,7 +154,24 @@ public class GameController : MonoBehaviour {
             */
         }
 
-    enum OnCollisionPoint
+        public void StopPlay()
+        {
+            Play = false;
+               if (Time.timeScale == 1.0F)
+                     Time.timeScale = 0F;
+        }
+
+        public void StartPlay()
+        {
+            Play = true;
+            Time.timeScale = 1.0F;
+        }
+
+        public void GameOverActive()
+        {
+            Hd.HudGameOver.gameObject.SetActive(true);
+        }
+        enum OnCollisionPoint
 		{Perfect,
 			Good,
 			Ouch
