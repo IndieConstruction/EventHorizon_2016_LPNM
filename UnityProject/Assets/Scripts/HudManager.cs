@@ -41,7 +41,7 @@ namespace EH.LPNM
 
         public void UpdateHud()
         {
-            ScoreText.text = "Score : " + gc.scoreCounter;
+          //  ScoreText.text = "Score : " + gc.scoreCounter;
             MultiplierText.text = "Multiplier : " + gc.Multiplier;
             PlayerLifeText.text = "Life :" + p.PlayerLife;
 

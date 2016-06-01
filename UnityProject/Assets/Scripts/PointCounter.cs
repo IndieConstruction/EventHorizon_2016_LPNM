@@ -10,6 +10,7 @@ namespace EH.LPNM
         public int PointsUI { get; set; }
         public Text PointLable;
         public string LablePrefix="Score: ";
+        public int mult = 5;
         // Use this for initialization
         void Start()
         {
@@ -22,7 +23,7 @@ namespace EH.LPNM
         {
             if (Points != PointsUI)
             {
-                PointsUI=PointsUI+10;
+                PointsUI=PointsUI+(10*mult);
                 PointLable.text = LablePrefix + PointsUI;
             }
 
