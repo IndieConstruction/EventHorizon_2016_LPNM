@@ -7,16 +7,20 @@ namespace EH.LPNM
 {
     public class HudGameOver : MonoBehaviour
     {
-        SaveScore ScoreS;
+		GameController gc;
+		HudManager hd;
         public Text ScorePoint;
         public Text GameOver;
         public Button Next;
         // Use this for initialization
         void Start()
         {
-            ScoreS = FindObjectOfType<SaveScore>();
-            ScorePoint.text = ScoreS.Score;
-            if (ScoreS.Complete == true)
+			gc = FindObjectOfType<GameController>();
+			hd = FindObjectOfType<HudManager>();
+
+			ScorePoint.text = hd.ScoreText.text;
+
+            if (gc.Complete == true)
             {
                 GameOver.text = "Success!";
                 Next.gameObject.SetActive(true);
@@ -38,16 +42,12 @@ namespace EH.LPNM
 
         public void LoadFirstScene()
         {
-            Destroy(ScoreS.gameObject);
             SceneManager.LoadScene("ProjectLPNM");
-          
         }
 
         public void LoadNextScene()
         {
-            Destroy(ScoreS.gameObject);
-            SceneManager.LoadScene(ScoreS.LoadLev);
-
+			SceneManager.LoadScene(gc.LoadLevel);
         }
 
         public void QuitGame()

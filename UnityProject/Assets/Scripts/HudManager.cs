@@ -15,7 +15,6 @@ namespace EH.LPNM
         public Text MultiplierText;
         public GameController gc;
         public HudGameOver HudGameOver;
-        public string Score;
         //public int scoreCounter;
         //public bool isEnable = false;
 
@@ -42,10 +41,9 @@ namespace EH.LPNM
 
         public void UpdateHud()
         {
-           // ScoreText.text = "Score : " + gc.scoreCounter;
+            ScoreText.text = "Score : " + gc.scoreCounter;
             MultiplierText.text = "Multiplier : " + gc.Multiplier;
             PlayerLifeText.text = "Life :" + p.PlayerLife;
-            Score = ScoreText.text;
 
         }
 

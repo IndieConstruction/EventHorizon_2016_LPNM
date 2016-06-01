@@ -24,7 +24,7 @@ namespace EH.LPNM
         // Update is called once per frame
         void Update()
         {
-            Score = hd.Score;
+          
         }
     }
 }
