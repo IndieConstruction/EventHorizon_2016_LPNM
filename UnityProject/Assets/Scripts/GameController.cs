@@ -164,6 +164,20 @@ public class GameController : MonoBehaviour {
         {
             Hd.HudGameOver.gameObject.SetActive(true);
         }
+        
+       public void PauseActive()
+        {
+            if (Hd.Pa.gameObject.activeSelf==false)
+            {
+                StopPlay();
+                Hd.Pa.gameObject.SetActive(true);
+            }
+            else
+            {              
+                Hd.Pa.gameObject.SetActive(false);
+                StartPlay();
+            }
+        }
         enum OnCollisionPoint
 		{Perfect,
 			Good,

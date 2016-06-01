@@ -27,6 +27,12 @@ namespace EH.LPNM{
 	void FixedUpdate () {
             if (gc.Play == true)
             {
+                if (Input.GetKey(KeyCode.Escape))
+                {
+                    gc.PauseActive();
+                    
+                }
+
                 ChangeShape();
                 //check if the screen is touched / clicked   
                 //	if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
