@@ -22,16 +22,20 @@ namespace EH.LPNM{
 		}
             gc=FindObjectOfType<GameController>();
         }
-	
+	void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                Debug.Log("togli pausa");
+                gc.PauseActive();
+            }
+
+        }
 	// Update is called once per frame
 	void FixedUpdate () {
             if (gc.Play == true)
             {
-                if (Input.GetKey(KeyCode.Escape))
-                {
-                    gc.PauseActive();
-                    
-                }
+               
 
                 ChangeShape();
                 //check if the screen is touched / clicked   
@@ -60,6 +64,8 @@ namespace EH.LPNM{
                     }
                 }
             }
+            
+          
 		//}
 		//check if the flag for movement is true and the current gameobject position is not same as the clicked / tapped position
 		if(flag && !Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude)){ //&& !(V3Equal(transform.position, endPoint))){
