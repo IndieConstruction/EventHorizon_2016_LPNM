@@ -24,7 +24,7 @@ namespace EH.LPNM
 
             p = FindObjectOfType<Player>();
             ScoreText.text = "Score : " + gc.scoreCounter;
-            MultiplierText.text = "Multiplier : " + gc.Multiplier;
+            MultiplierText.text = "X" + gc.Multiplier;
             PlayerLifeText.text = "Life : " + p.PlayerLife;
             
 
@@ -43,7 +43,7 @@ namespace EH.LPNM
         public void UpdateHud()
         {
           //  ScoreText.text = "Score : " + gc.scoreCounter;
-            MultiplierText.text = "Multiplier : " + gc.Multiplier;
+            MultiplierText.text = "X" + gc.Multiplier;
             PlayerLifeText.text = "Life :" + p.PlayerLife;
 
         }
