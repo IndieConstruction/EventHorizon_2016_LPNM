@@ -30,40 +30,37 @@ namespace EH.LPNM{
 
             if (UseGraphic==true)
             {
-                MeshFilter rightMeshLetter;
-                rightMeshLetter = GetComponentInChildren<MeshFilter>();
+                SkinnedMeshRenderer rightMeshLetter;
+                rightMeshLetter = GetComponentInChildren<SkinnedMeshRenderer>();
                 switch (rightLetter)
                 {
-                    case "M":
+                    case "Q":
                         //SharedMesh è il sottocomponente che mi permette di cambiare il MeshFilters.
                         rightMeshLetter.sharedMesh = MeshesLetter[0].sharedMesh;
                         break;
-                    case "A":
+                    case "W":
                         rightMeshLetter.sharedMesh = MeshesLetter[1].sharedMesh;
                         break;
-                    case "V":
+                    case "E":
                         rightMeshLetter.sharedMesh = MeshesLetter[2].sharedMesh;
                         break;
-                    case "X":
+                    case "A":
                         rightMeshLetter.sharedMesh = MeshesLetter[3].sharedMesh;
                         break;
-                    case "E":
+                    case "S":
                         rightMeshLetter.sharedMesh = MeshesLetter[4].sharedMesh;
                         break;
-                    case "S":
+                    case "D":
                         rightMeshLetter.sharedMesh = MeshesLetter[5].sharedMesh;
                         break;
-                    case "D":
+                    case "Z":
                         rightMeshLetter.sharedMesh = MeshesLetter[6].sharedMesh;
                         break;
-                    case "Z":
+                    case "X":
                         rightMeshLetter.sharedMesh = MeshesLetter[7].sharedMesh;
                         break;
-                    case "W":
-                        rightMeshLetter.sharedMesh = MeshesLetter[8].sharedMesh;
-                        break;
                     case "C":
-                        rightMeshLetter.sharedMesh = MeshesLetter[9].sharedMesh;
+                        rightMeshLetter.sharedMesh = MeshesLetter[8].sharedMesh;
                         break;
                     default:
                         Debug.Log("Non conosco la lettera");

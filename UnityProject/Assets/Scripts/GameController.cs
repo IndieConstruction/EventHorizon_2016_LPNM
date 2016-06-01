@@ -218,7 +218,6 @@ public class GameController : MonoBehaviour {
 				p.PlayerLife --;
 				Hd.UpdateHud();
 				BonusScore = "WRONG LETTER!";
-
 				break;
 			default:
 				break;
