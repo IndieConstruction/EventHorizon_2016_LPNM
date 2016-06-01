@@ -26,7 +26,7 @@ public class Letter : MonoBehaviour {
 //			transform.Translate (Vector3.back * Time.deltaTime * speed);
 	}
 	
-		void OnTriggerEnter(Collider other){
+		void OnTriggerExit(Collider other){
 			this.gameObject.SetActive(false);
 		}
 }
