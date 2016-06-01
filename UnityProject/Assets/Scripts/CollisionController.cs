@@ -10,8 +10,8 @@ public class CollisionController : MonoBehaviour {
     void Awake() {
 
             gc = FindObjectOfType<GameController>();
-
         }
+
 
 	void OnTriggerEnter(Collider other){
 			///
