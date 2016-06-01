@@ -6,13 +6,14 @@ namespace EH.LPNM{
         public bool UseGraphic;
         public TextMesh DebugText;
 
+        Animator animator;
 
 	    public string Letter;
 	    public MeshFilter[] MeshesLetter;
         public int PlayerLife;
 
    void Start(){
-
+            animator = GetComponentInChildren <Animator>();
 	
 	}
 	void Update(){
@@ -23,7 +24,7 @@ namespace EH.LPNM{
 		}
 
 
-        public void MeshChange(string rightLetter)
+   public void MeshChange(string rightLetter)
         {
             DebugText.gameObject.SetActive(!UseGraphic);
             DebugText.text = rightLetter;
@@ -35,32 +36,42 @@ namespace EH.LPNM{
                 switch (rightLetter)
                 {
                     case "Q":
+                        animator.SetInteger("LetterNumber", 1);
+                        Debug.Log("Sto settando l'animazione");
                         //SharedMesh è il sottocomponente che mi permette di cambiare il MeshFilters.
-                        rightMeshLetter.sharedMesh = MeshesLetter[0].sharedMesh;
+                        //rightMeshLetter.sharedMesh = MeshesLetter[0].sharedMesh;
                         break;
                     case "W":
-                        rightMeshLetter.sharedMesh = MeshesLetter[1].sharedMesh;
+                        animator.SetInteger("LetterNumber", 2);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[1].sharedMesh;
                         break;
                     case "E":
-                        rightMeshLetter.sharedMesh = MeshesLetter[2].sharedMesh;
+                        animator.SetInteger("LetterNumber", 3);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[2].sharedMesh;
                         break;
                     case "A":
-                        rightMeshLetter.sharedMesh = MeshesLetter[3].sharedMesh;
+                        animator.SetInteger("LetterNumber", 4);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[3].sharedMesh;
                         break;
                     case "S":
-                        rightMeshLetter.sharedMesh = MeshesLetter[4].sharedMesh;
+                        animator.SetInteger("LetterNumber", 5);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[4].sharedMesh;
                         break;
                     case "D":
-                        rightMeshLetter.sharedMesh = MeshesLetter[5].sharedMesh;
+                        animator.SetInteger("LetterNumber", 6);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[5].sharedMesh;
                         break;
                     case "Z":
-                        rightMeshLetter.sharedMesh = MeshesLetter[6].sharedMesh;
+                        animator.SetInteger("LetterNumber", 7);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[6].sharedMesh;
                         break;
                     case "X":
-                        rightMeshLetter.sharedMesh = MeshesLetter[7].sharedMesh;
+                        animator.SetInteger("LetterNumber", 8);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[7].sharedMesh;
                         break;
                     case "C":
-                        rightMeshLetter.sharedMesh = MeshesLetter[8].sharedMesh;
+                        animator.SetInteger("LetterNumber", 9);
+                        //rightMeshLetter.sharedMesh = MeshesLetter[8].sharedMesh;
                         break;
                     default:
                         Debug.Log("Non conosco la lettera");
