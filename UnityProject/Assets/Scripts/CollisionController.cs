@@ -54,7 +54,10 @@ namespace EH.LPNM
         {
             gc.DistanceResult = distanceResult;
             if (rightLetter == false)
+            {
+                gc.OnPointsToAdd(Vote.wrongLetter, distanceResult);
                 return Vote.wrongLetter;
+            }
             if (distanceResult <= DistanceX)
             {
                 Debug.LogFormat("Perfect! {0} ", distanceResult); //format permette di mettere le graffe, e di riempirle con cio' che scrivo dopo
