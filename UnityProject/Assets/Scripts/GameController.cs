@@ -43,7 +43,8 @@ public class GameController : MonoBehaviour {
 //	public GameObject[] ObstacleLettersPrefabs;
 //	public GameObject[] PlayerPrefabs;
 	Vector3 posPlayer;
-	public float StartGame;
+	float timeToStart= 0.0f;
+	public float StartGame; // 
 	public int scoreCounter; // Punteggio del gioco
 	public int Score4NextLevel;
 	private string BonusScore; 
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour {
     public string LoadLevel; //variabile nome scena livello successivo
     public bool StopInput = true; //variabile per fermare gli input
 	public bool Complete = false; //livello superato o meno
+	
 	
 	//public Transform[] LettersSpawnPoints;
 	//public float CounterXObstacle;
@@ -72,6 +74,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
+
 			iC = FindObjectOfType<InputController>();
             Hd = FindObjectOfType <HudManager>();
 			sc = FindObjectOfType<SoundController>();
@@ -90,9 +93,10 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 			
-			if(StartGame <= 3){
-				StartGame = StartGame + Time.deltaTime;
-				Debug.Log("Inizio a contare" + StartGame);
+			if(timeToStart <= StartGame){
+				//StartGame = StartGame + Time.deltaTime;
+				timeToStart = timeToStart + Time.deltaTime;
+				Debug.Log("Inizio a contare" + timeToStart);
 
 			}
 			else {
