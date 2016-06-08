@@ -20,6 +20,7 @@ namespace EH.LPNM
 
 			ScorePoint.text = hd.ScoreText.text;
 
+            //Se si ha superato il livello viene scritto Success!, altrimenti Game Over
             if (gc.Complete == true)
             {
                 GameOver.text = "Success!";
@@ -40,16 +41,23 @@ namespace EH.LPNM
 
         }
 
+        /// <summary>
+        /// Carica la prima scena
+        /// </summary>
         public void LoadFirstScene()
         {
             SceneManager.LoadScene("ProjectLPNM");
         }
-
+        /// <summary>
+        /// carica la scena contenuto in LoadLevel
+        /// </summary>
         public void LoadNextScene()
         {
 			SceneManager.LoadScene(gc.LoadLevel);
         }
-
+        /// <summary>
+        /// Quitta il gioco
+        /// </summary>
         public void QuitGame()
         {
             Application.Quit();

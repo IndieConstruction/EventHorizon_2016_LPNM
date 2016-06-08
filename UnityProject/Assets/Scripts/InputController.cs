@@ -33,7 +33,7 @@ namespace EH.LPNM{
         }
 	// Update is called once per frame
 	void FixedUpdate () {
-            if (gc.Play == true)
+            if (gc.Play == true) //se false blocca gli input
             {
                
 

@@ -21,6 +21,7 @@ namespace EH.LPNM
         // Update is called once per frame
         void Update()
         {
+            //quando il punteggio nel gamecontroller è diverso da quello registrato in questa classe, ovvero la UI, aumenta il punteggio della UI gradualmente in base al valore di mult
             if (Points != PointsUI)
             {
                 PointsUI=PointsUI+(10*mult);

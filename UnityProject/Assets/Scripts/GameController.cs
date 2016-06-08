@@ -49,9 +49,9 @@ public class GameController : MonoBehaviour {
 	public float DistanceResult; // Distanza tra il punto di collisone e la lettera
 	public int Multiplier;// moltiplicatore generico
     public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
-    public string LoadLevel;
-    public bool Play=true;
-	public bool Complete = false;
+    public string LoadLevel; //variabile nome scena livello successivo
+    public bool Play=true; //variabile per fermare gli input
+	public bool Complete = false; //livello superato o meno
 	
 	//public Transform[] LettersSpawnPoints;
 	//public float CounterXObstacle;
@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour {
         
             Hd = FindObjectOfType <HudManager>();
 			sc = FindObjectOfType<SoundController>();
-            StartPlay();
+            StartInputAndTime();
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -103,7 +103,7 @@ public class GameController : MonoBehaviour {
             if (p.PlayerLife <= 0)
             {
                 ChangeScenes();
-                StopPlay();
+                StopInputAndTime();
                 GameOverActive();
 				OnStartGame();
             }
@@ -149,36 +149,46 @@ public class GameController : MonoBehaviour {
             }
             */
         }
-
-        public void StopPlay()
+        /// <summary>
+        /// Ferma input mouse e tempo del gioco
+        /// </summary>
+        public void StopInputAndTime()
         {
             Play = false;
                if (Time.timeScale == 1.0F)
                      Time.timeScale = 0F;
         }
-
-        public void StartPlay()
+        /// <summary>
+        /// Starta input mouse e tempo del gioco
+        /// </summary>
+        public void StartInputAndTime()
         {
             Play = true;
             Time.timeScale = 1.0F;
         }
 
+        /// <summary>
+        /// Visualizza Hud Game Over 
+        /// </summary>
         public void GameOverActive()
         {
             Hd.HudGameOver.gameObject.SetActive(true);
         }
         
+        /// <summary>
+        /// Attiva la pausa se inattiva, la disabilita se attiva
+        /// </summary>
        public void PauseActive()
         {
             if (Hd.Pa.gameObject.activeSelf==false)
             {
-                StopPlay();
+                StopInputAndTime();
                 Hd.Pa.gameObject.SetActive(true);
             }
             else
             {              
                 Hd.Pa.gameObject.SetActive(false);
-                StartPlay();
+                StartInputAndTime();
             }
         }
         enum OnCollisionPoint
