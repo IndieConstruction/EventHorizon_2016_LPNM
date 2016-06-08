@@ -37,12 +37,13 @@ public class GameController : MonoBehaviour {
     SoundController sc;
 	Player p;
 	Letter l;
+	InputController iC;
 	public int Level ;
 	
 //	public GameObject[] ObstacleLettersPrefabs;
 //	public GameObject[] PlayerPrefabs;
 	Vector3 posPlayer;
-	public float GameTimer;
+	public float StartGame;
 	public int scoreCounter; // Punteggio del gioco
 	public int Score4NextLevel;
 	private string BonusScore; 
@@ -50,7 +51,7 @@ public class GameController : MonoBehaviour {
 	public int Multiplier;// moltiplicatore generico
     public float CountCollider; //Secondi di invulnerabilità dopo collisione col tubo 
     public string LoadLevel; //variabile nome scena livello successivo
-    public bool Play=true; //variabile per fermare gli input
+    public bool StopInput = true; //variabile per fermare gli input
 	public bool Complete = false; //livello superato o meno
 	
 	//public Transform[] LettersSpawnPoints;
@@ -71,33 +72,37 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
-        
+			iC = FindObjectOfType<InputController>();
             Hd = FindObjectOfType <HudManager>();
 			sc = FindObjectOfType<SoundController>();
             StartInputAndTime();
+			iC.enabled = false;
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
-	}	
+	}
+
+
+
+
+	
 	
 	// Update is called once per frame
 	void Update () {
-//			if(GameTimer <=60){
-//				GameTimer = GameTimer + Time.deltaTime;
-//			}
-//			else {
-//				Debug.Log("Tempo Scaduto");
-//				GameTimer = 0;
-			//}
-            //if (TimerXObstacle >= CounterXObstacle)
-            //{
-            //    RandomSpawnObstacle();
-            //    Debug.Log("Sto Spawnando");
+			
+			if(StartGame <= 3){
+				StartGame = StartGame + Time.deltaTime;
+				Debug.Log("Inizio a contare" + StartGame);
 
-            //    TimerXObstacle = 0;
-            //}
-            //TimerXObstacle = TimerXObstacle + Time.deltaTime;
-        }
+			}
+			else {
+				GameIsFreeze= false;
+				iC.enabled=true;
+				Debug.Log("Inizio");
+
+			}
+		}
+
 
     void FixedUpdate() {
             if (p.PlayerLife <= 0)
@@ -105,8 +110,8 @@ public class GameController : MonoBehaviour {
                 ChangeScenes();
                 StopInputAndTime();
                 GameOverActive();
-				OnStartGame();
             }
+
     }
 
 
@@ -154,7 +159,7 @@ public class GameController : MonoBehaviour {
         /// </summary>
         public void StopInputAndTime()
         {
-            Play = false;
+            StopInput = false;
                if (Time.timeScale == 1.0F)
                      Time.timeScale = 0F;
         }
@@ -163,7 +168,7 @@ public class GameController : MonoBehaviour {
         /// </summary>
         public void StartInputAndTime()
         {
-            Play = true;
+            StopInput = true;
             Time.timeScale = 1.0F;
         }
 
@@ -243,13 +248,8 @@ public class GameController : MonoBehaviour {
                 Multiplier = 10;
             }
         }
+			
 
-		public void OnStartGame(){
-			p = GetComponent<Player>();
-			if(GameIsFreeze== true){
-				Play = false;
-			}
-		}
 	}
 	}
 

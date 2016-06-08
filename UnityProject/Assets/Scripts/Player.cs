@@ -13,10 +13,13 @@ namespace EH.LPNM{
         public int PlayerLife;
 
    void Start(){
+			
             animator = GetComponentInChildren <Animator>();
 			gc = FindObjectOfType<GameController>();
+		
 	
 	}
+			
 	void Update(){
 
 		}
@@ -26,7 +29,7 @@ namespace EH.LPNM{
 
 		void OnTriggerEnter(Collider Other){
 			RoadManager rm;
-			rm = GetComponent<RoadManager>();
+			rm = FindObjectOfType<RoadManager>();
 			if(Other.tag == "EndLevel"){
 				rm.speedA = 0;
 				rm.speedB = 0;
