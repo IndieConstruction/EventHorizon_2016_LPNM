@@ -6,7 +6,7 @@ public class OnNextLevel : MonoBehaviour {
 	
 
 	void OnTriggerEnter(Collider other){
-            gc.ChangeScenes();
+            gc.EndLevelComplete();
 			/* if(gc.scoreCounter >= gc.Score4NextLevel ){
 			Application.LoadLevel("LevelTwo");
 			Debug.Log("Nextlevel");

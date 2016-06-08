@@ -107,7 +107,7 @@ public class GameController : MonoBehaviour {
     void FixedUpdate() {
             if (p.PlayerLife <= 0)
             {
-                ChangeScenes();
+               // EndLevelComplete();
                 StopInputAndTime();
                 GameOverActive();
             }
@@ -137,13 +137,13 @@ public class GameController : MonoBehaviour {
     /// <summary>
     /// Funzione per cambiare la scena
     /// </summary>
-	public void ChangeScenes () {
+	public void EndLevelComplete () {
             //	if(p.PlayerLife<=0){
-            if (scoreCounter >= Score4NextLevel)
-            {
+        //    if (scoreCounter >= Score4NextLevel)
+          //  {
                Complete = true;
-            }
-            Debug.Log("GameOver");
+         //   }
+       //     Debug.Log("GameOver");
 
 				//}
          /*   if (scoreCounter >= Score4NextLevel)
