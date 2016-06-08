@@ -14,8 +14,8 @@ namespace EH.LPNM
         public Text PointDistanceText;
         public Text MultiplierText;
         public GameController gc;
-        public HudGameOver HudGameOver;
-        public Pause Pa;
+        public HudGameOver HudGameOver; //hud game over
+        public Pause Pa; //hud pausa
         //public int scoreCounter;
         //public bool isEnable = false;
 

@@ -23,11 +23,17 @@ namespace EH.LPNM
 
         }
 
+        /// <summary>
+        /// Quitta il game
+        /// </summary>
         public void QuitGame()
         {
             Application.Quit();
         }
 
+        /// <summary>
+        /// richiama funziona PauseActive del gamecontroller per riattivare o disabilitare la pausa
+        /// </summary>
         public void ResumeGame()
         {
             gc.PauseActive();
