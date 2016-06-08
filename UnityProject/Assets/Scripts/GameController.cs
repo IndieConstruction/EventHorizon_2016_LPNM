@@ -209,7 +209,8 @@ public class GameController : MonoBehaviour {
 		/// Valuta il punteggio e lo assegna in base al voto
 		/// </summary>
 		public void OnPointsToAdd (CollisionController.Vote vote, float distancePoint){
-
+			Bonus b;
+			b = FindObjectOfType<Bonus>();
 			switch (vote) {
 			case CollisionController.Vote.Perfect :
 				sc.GameController_OnPerfectCollision();
@@ -235,12 +236,13 @@ public class GameController : MonoBehaviour {
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.wrongLetter:
+				if(b.IsShield == false){
 				sc.GameController_OnWrongLetter();
 				Multiplier = 0;
 				p.PlayerLife --;
 				Hd.UpdateHud();
-				BonusScore = "WRONG LETTER!";
-				break;
+				BonusScore = "WRONG LETTER!";}
+					break;
 			default:
 				break;
 			}

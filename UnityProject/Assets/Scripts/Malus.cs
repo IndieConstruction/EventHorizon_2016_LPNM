@@ -19,9 +19,10 @@ namespace EH.LPNM
         {
 
         }
-        void OnTriggerEnter(Collider other)   
-        {
-            if (p!= null)
+        public void OnTriggerEnter(Collider other)   {	
+			Bonus b;
+			b = FindObjectOfType<Bonus>();
+			if (p!= null && b.IsShield == false)
             {
                 if (gc.Multiplier >= 1) {
                     gc.Multiplier = 0;

@@ -17,8 +17,12 @@ namespace EH.LPNM
         private int TakeBonus = 1;
         private int NearlyBonus = 2;
         private int Nothing = 0;
-        public bool IsShield;
-        public bool IsMagnet;
+        
+		public bool IsShield;
+		float bonusShieldTimer = 0.0f;
+
+		public bool IsMagnet;
+		float bonusMagneticTimer = 0.0f;
 
         // Use this for initialization
         void Awake(){
@@ -43,6 +47,8 @@ namespace EH.LPNM
         // Update is called once per frame
         void Update()
         {
+			IsBonusShield();
+			//IsBonusMagnetic();
         }
         
 		void OnTriggerEnter(Collider other) {
@@ -68,13 +74,32 @@ namespace EH.LPNM
 
         }
 
-        public void IsBonusMagnetic() {
-            if (IsMagnet == true) {
-               transform.Translate(new Vector3(p.transform.position.x, p.transform.position.y,this.transform.position.z));
-            }
-        }
+//		public void IsBonusMagnetic() {
+//			
+//            if (IsMagnet == true) {
+//				//GetComponentInChildren<SphereCollider>().enabled=true;
+//				bonusMagneticTimer = bonusMagneticTimer +Time.deltaTime;
+//                transform.Translate(new Vector3(p.transform.position.x, p.transform.position.y,this.transform.position.z));
+//				if(bonusMagneticTimer >= 10){
+//					IsMagnet = false;
+//					bonusMagneticTimer = 0;
+//				}
+//            }
+//        }
+			
+		public void IsBonusShield() {
+			if(IsShield == true){
+				bonusShieldTimer = bonusShieldTimer + Time.deltaTime;
+				if (bonusShieldTimer >=10) {
+				IsShield = false;
+					bonusShieldTimer = 0;
+				}
+				//se collidi con unmalus non perdi ne vita ne moltiplicatore e perdi lo scudo
 
-        public void IsBonusShield() { }
+					
+
+			}
+		}
 
         /// <summary>
         /// Calcolo della distanza dal centro del Bonus e la collisione del player
