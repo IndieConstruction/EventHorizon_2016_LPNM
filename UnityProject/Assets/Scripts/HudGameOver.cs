@@ -20,7 +20,7 @@ namespace EH.LPNM
 
 			ScorePoint.text = hd.ScoreText.text;
 
-            //Se si ha superato il livello viene scritto Success!, altrimenti Game Over
+            //Se si ha superato il livello viene scritto Success! e abilita il bottone per il livello successivo, altrimenti Game Over
             if (gc.Complete == true)
             {
                 GameOver.text = "Success!";
