@@ -18,11 +18,13 @@ namespace EH.LPNM
         private int NearlyBonus = 2;
         private int Nothing = 0;
         
+		bool isBonusActive;
+
 		public bool IsShield;
-		float bonusShieldTimer = 0.0f;
+		public float bonusShieldTimer = 0.0f;
 
 		public bool IsMagnet;
-		float bonusMagneticTimer = 0.0f;
+        public float bonusMagneticTimer = 0.0f;
 
         // Use this for initialization
         void Awake(){
@@ -34,6 +36,7 @@ namespace EH.LPNM
         }
 
 		void Start(){
+			isBonusActive = false;
 			
 		}
 
@@ -45,15 +48,33 @@ namespace EH.LPNM
        
 
         // Update is called once per frame
-        void Update()
-        {
-			IsBonusShield();
-			//IsBonusMagnetic();
-        }
+        void Update(){
+			if (isBonusActive == true && IsShield == true) {
+				bonusShieldTimer = bonusShieldTimer + Time.deltaTime;
+				if (bonusShieldTimer >= 10) {
+					IsShield = false;
+					bonusShieldTimer = 0;
+				}
+			}
+			if (isBonusActive == true && IsMagnet== true) {
+				bonusMagneticTimer = bonusMagneticTimer + Time.deltaTime;
+				GetComponentInChildren<SphereCollider>().enabled=true;
+				transform.Translate(new Vector3(p.transform.position.x, p.transform.position.y,this.transform.position.z));
+				if(bonusMagneticTimer >= 10){
+					IsMagnet = false;
+					bonusMagneticTimer = 0;
+				}
+			}
+       }
         
 		void OnTriggerEnter(Collider other) {
             float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
-
+			if (IsMagnet == true) {
+				IsBonusMagnetic ();
+			}
+			if (IsShield == true) {
+				IsBonusShield ();
+			}
             if (p != null && Distance == TakeBonus)
             {
                 Debug.Log("Preso! "+ Vector3.Distance(this.transform.position, p.transform.position));
@@ -63,7 +84,10 @@ namespace EH.LPNM
                 gc.Multiplier = gc.Multiplier + BonusMultiplier;//aumento del moltiplicatore
                 hd.UpdateHud();//aggiorna l'hud
                 gc.MultiplierLimiter();//non deve superare il 10
-                this.gameObject.SetActive(false);
+				foreach (var item in gameObject.GetComponentsInChildren<MeshRenderer>()) 
+				{ 
+					item.enabled = false;
+				}
             }
             else if (Distance==NearlyBonus)
             {
@@ -74,32 +98,21 @@ namespace EH.LPNM
 
         }
 
-//		public void IsBonusMagnetic() {
-//			
-//            if (IsMagnet == true) {
-//				//GetComponentInChildren<SphereCollider>().enabled=true;
-//				bonusMagneticTimer = bonusMagneticTimer +Time.deltaTime;
-//                transform.Translate(new Vector3(p.transform.position.x, p.transform.position.y,this.transform.position.z));
-//				if(bonusMagneticTimer >= 10){
-//					IsMagnet = false;
-//					bonusMagneticTimer = 0;
-//				}
-//            }
-//        }
+		public void IsBonusMagnetic() {
+				isBonusActive = true;
+				
+        }
 			
 		public void IsBonusShield() {
-			if(IsShield == true){
-				bonusShieldTimer = bonusShieldTimer + Time.deltaTime;
-				if (bonusShieldTimer >=10) {
-				IsShield = false;
-					bonusShieldTimer = 0;
-				}
+				isBonusActive = true;
+
+		}
 				//se collidi con unmalus non perdi ne vita ne moltiplicatore e perdi lo scudo
 
 					
 
-			}
-		}
+//			}
+//		}
 
         /// <summary>
         /// Calcolo della distanza dal centro del Bonus e la collisione del player
