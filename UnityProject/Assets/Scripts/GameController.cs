@@ -139,10 +139,10 @@ public class GameController : MonoBehaviour {
     /// </summary>
 	public void EndLevelComplete () {
             //	if(p.PlayerLife<=0){
-        //    if (scoreCounter >= Score4NextLevel)
-          //  {
+          if (scoreCounter >= Score4NextLevel)
+          {
                Complete = true;
-         //   }
+          }
        //     Debug.Log("GameOver");
 
 				//}
