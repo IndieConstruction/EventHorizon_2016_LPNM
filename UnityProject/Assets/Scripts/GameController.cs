@@ -102,7 +102,6 @@ public class GameController : MonoBehaviour {
 			else {
 				GameIsFreeze= false;
 				iC.enabled=true;
-				Debug.Log("Inizio");
 
 			}
 		}
@@ -113,7 +112,7 @@ public class GameController : MonoBehaviour {
             {
                // EndLevelComplete();
                 StopInputAndTime();
-                GameOverActive();
+                CompleteLevelActive();
             }
 
     }
@@ -176,14 +175,23 @@ public class GameController : MonoBehaviour {
             Time.timeScale = 1.0F;
         }
 
-        /// <summary>
+       /// <summary>
         /// Visualizza Hud Game Over 
         /// </summary>
-        public void GameOverActive()
+   /*     public void CompleteLevelActive()
         {
             Hd.HudGameOver.gameObject.SetActive(true);
         }
-        
+        */
+		public void CompleteLevelActive()
+		{
+			if(Complete==true)
+			Hd.HudCompleteLevel.gameObject.SetActive(true);
+			else
+				Hd.HudGameOver.gameObject.SetActive(true);
+		
+		}
+
         /// <summary>
         /// Attiva la pausa se inattiva, la disabilita se attiva
         /// </summary>

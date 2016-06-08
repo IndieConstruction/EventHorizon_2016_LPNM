@@ -38,7 +38,7 @@ namespace EH.LPNM{
 				rm.speedE = 0;
                 gc.EndLevelComplete();
                 gc.StopInputAndTime();
-                gc.GameOverActive();
+				gc.CompleteLevelActive ();
 			}
 		}
 

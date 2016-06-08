@@ -20,7 +20,7 @@ public class EndLevel : MonoBehaviour {
 		{
 			if (p != null&&other.gameObject==p.gameObject){ //se si scontra col player ferma il gioco e setta la schermata di gameover
 				gc.StopInputAndTime ();
-				gc.GameOverActive ();
+				gc.CompleteLevelActive ();
 			}
 		}
 

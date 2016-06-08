@@ -15,6 +15,7 @@ namespace EH.LPNM
         public Text MultiplierText;
         public GameController gc;
         public HudGameOver HudGameOver; //hud game over
+		public HudGameOver HudCompleteLevel;
         public Pause Pa; //hud pausa
         //public int scoreCounter;
         //public bool isEnable = false;
