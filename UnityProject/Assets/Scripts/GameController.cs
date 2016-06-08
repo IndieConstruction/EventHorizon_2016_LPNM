@@ -54,14 +54,15 @@ public class GameController : MonoBehaviour {
     public string LoadLevel; //variabile nome scena livello successivo
     public bool StopInput = true; //variabile per fermare gli input
 	public bool Complete = false; //livello superato o meno
-	
-	
-	//public Transform[] LettersSpawnPoints;
-	//public float CounterXObstacle;
-	//float TimerXObstacle;
-	// Use this for initialization
-	
-	void Awake(){
+
+
+        //public Transform[] LettersSpawnPoints;
+        //public float CounterXObstacle;
+        //float TimerXObstacle;
+        // Use this for initialization
+
+    
+                void Awake(){
 			Multiplier = 0;
 			DontDestroyOnLoad(this.gameObject);
 
@@ -92,8 +93,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-			
-			if(timeToStart <= StartGame){
+
+            if (timeToStart <= StartGame){
 				//StartGame = StartGame + Time.deltaTime;
 				timeToStart = timeToStart + Time.deltaTime;
 				Debug.Log("Inizio a contare" + timeToStart);
