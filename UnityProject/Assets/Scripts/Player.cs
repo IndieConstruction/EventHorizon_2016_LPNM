@@ -5,7 +5,7 @@ namespace EH.LPNM{
 
         public bool UseGraphic;
         public TextMesh DebugText;
-
+		GameController gc;
         Animator animator;
 
 	    public string Letter;
@@ -14,6 +14,7 @@ namespace EH.LPNM{
 
    void Start(){
             animator = GetComponentInChildren <Animator>();
+			gc = FindObjectOfType<GameController>();
 	
 	}
 	void Update(){
@@ -23,8 +24,21 @@ namespace EH.LPNM{
 
 		}
 
+		void OnTriggerEnter(Collider Other){
+			RoadManager rm;
+			rm = GetComponent<RoadManager>();
+			if(Other.tag == "EndLevel"){
+				rm.speedA = 0;
+				rm.speedB = 0;
+				rm.speedC = 0; 
+				rm.speedD = 0;
+				rm.speedE = 0;
+				
+			}
+		}
 
-   public void MeshChange(string rightLetter)
+
+	public void MeshChange(string rightLetter)
         {
             DebugText.gameObject.SetActive(!UseGraphic);
             DebugText.text = rightLetter;

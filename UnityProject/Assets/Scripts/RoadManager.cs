@@ -33,19 +33,19 @@ public class RoadManager : MonoBehaviour   {
 		}
 		
 		void Update(){
-			if(gc.Multiplier ==0 && gc.Multiplier <= 2){
+			if(gc.GameIsFreeze == false && gc.Multiplier ==0 && gc.Multiplier <= 2){
 				speed = speedA;
 			}
-			if (gc.Multiplier >=3 && gc.Multiplier <= 4) {
+			if (gc.GameIsFreeze == false && gc.Multiplier >=3 && gc.Multiplier <= 4) {
 				speed = speedB;
 			}
-			if (gc.Multiplier >=5 && gc.Multiplier <= 6) {
+			if (gc.GameIsFreeze == false && gc.Multiplier >=5 && gc.Multiplier <= 6) {
 				speed = speedC;
 			}
-			if (gc.Multiplier >=7 && gc.Multiplier <= 8) {
+			if (gc.GameIsFreeze == false && gc.Multiplier >=7 && gc.Multiplier <= 8) {
 				speed = speedD;
 			}
-			if (gc.Multiplier >=9 && gc.Multiplier <= 10) {
+			if (gc.GameIsFreeze == false && gc.Multiplier >=9 && gc.Multiplier <= 10) {
 				speed = speedE;
 			}
 			transform.Translate (Vector3.back * Time.deltaTime * speed);

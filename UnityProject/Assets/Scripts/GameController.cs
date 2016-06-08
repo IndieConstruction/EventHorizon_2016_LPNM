@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour {
 	public static event GameEvent OnWrongLetter;
 
     #endregion
+	
+	public bool GameIsFreeze;
     public static string LevelName;
     HudManager Hd;
     SoundController sc;
@@ -103,6 +105,7 @@ public class GameController : MonoBehaviour {
                 ChangeScenes();
                 StopPlay();
                 GameOverActive();
+				OnStartGame();
             }
     }
 
@@ -230,6 +233,13 @@ public class GameController : MonoBehaviour {
                 Multiplier = 10;
             }
         }
+
+		public void OnStartGame(){
+			p = GetComponent<Player>();
+			if(GameIsFreeze== true){
+				Play = false;
+			}
+		}
 	}
 	}
 
