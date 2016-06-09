@@ -21,10 +21,13 @@ namespace EH.LPNM
 		bool isBonusActive;
 
 		public bool IsShield;
-		public float bonusShieldTimer = 0.0f;
+		float bonusShieldTimer = 0.0f;
+		public float BonusShielTimer;
 
-		public bool IsMagnet;
-        public float bonusMagneticTimer = 0.0f;
+		public bool IsMagnetic;
+		bool IsMoving;
+        float bonusMagneticTimer = 0.0f;
+		public float BonusMagneticTimer;
 
         // Use this for initialization
         void Awake(){
@@ -49,28 +52,36 @@ namespace EH.LPNM
 
         // Update is called once per frame
         void Update(){
-			if (isBonusActive == true && IsShield == true) {
-				bonusShieldTimer = bonusShieldTimer + Time.deltaTime;
-				if (bonusShieldTimer >= 10) {
-					IsShield = false;
-					bonusShieldTimer = 0;
-				}
-			}
-			if (isBonusActive == true && IsMagnet== true) {
+			// Sposta il Bonus verso il Player se IsMoving è = True.
+			if (p.transform.position != this.transform.position && IsMoving == true) {
 				bonusMagneticTimer = bonusMagneticTimer + Time.deltaTime;
-				GetComponentInChildren<SphereCollider>().enabled=true;
-				transform.Translate(new Vector3(p.transform.position.x, p.transform.position.y,this.transform.position.z));
-				if(bonusMagneticTimer >= 10){
-					IsMagnet = false;
+				//transform.Translate(new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z)*Time.deltaTime*0.1f);
+				transform.position = Vector3.MoveTowards(this.transform.position, p.transform.position, 1);
+				if(p.transform.position == this.transform.position){
+					//IsMoving = false;
+				
+				if(bonusMagneticTimer >= BonusMagneticTimer){
+					IsMoving = false;
 					bonusMagneticTimer = 0;
-				}
+					}}
 			}
+				if (isBonusActive == true && IsShield == true) {
+					bonusShieldTimer = bonusShieldTimer + Time.deltaTime;
+				if (bonusShieldTimer >= BonusShielTimer) {
+						IsShield = false;
+						bonusShieldTimer = 0;
+					}
+				}
        }
         
 		void OnTriggerEnter(Collider other) {
-            float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
-			if (IsMagnet == true) {
-				IsBonusMagnetic ();
+			if(other.GetComponent<Player>() == null){
+				return;
+			}
+
+			float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
+			if (IsMagnetic == true) {
+				p.ActiveMagneticManager(BonusMagneticTimer);
 			}
 			if (IsShield == true) {
 				IsBonusShield ();
@@ -95,13 +106,13 @@ namespace EH.LPNM
                 Debug.Log("Quasi vicino "+ Vector3.Distance(this.transform.position, p.transform.position));
 				this.gameObject.SetActive(false);
             }               
-
+			
         }
-
-		public void IsBonusMagnetic() {
-				isBonusActive = true;
-				
-        }
+		#region API
+		public void GoToPosition(){
+			IsMoving= true;
+		}
+		#endregion
 			
 		public void IsBonusShield() {
 				isBonusActive = true;
