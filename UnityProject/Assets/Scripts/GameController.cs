@@ -139,14 +139,14 @@ public class GameController : MonoBehaviour {
 //	}
     
     /// <summary>
-    /// Funzione per cambiare la scena
+    /// Setta la variabile Complete a true se il punteggio raggiunto è sufficiente per superare il livello
     /// </summary>
 	public void EndLevelComplete () {
             //	if(p.PlayerLife<=0){
           if (scoreCounter >= Score4NextLevel)
           {
             Complete = true;
-			SceneManager.LoadScene("LevelTwo");
+		//	SceneManager.LoadScene("LevelTwo");
           }
 				//}
          /*   if (scoreCounter >= Score4NextLevel)

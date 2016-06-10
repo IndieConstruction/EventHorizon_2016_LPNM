@@ -13,13 +13,13 @@ public class Leaderboard : MonoBehaviour {
 	void Update () {
 	
 	}
-
+	/*
 	void InitializeArray(){
 		foreach (string Point in LeaderboardPoint) {
 			Point = PlayerPrefs.GetString ();	
 		}
 	}
-
+	/*
 	void GetRegister(){
 		Temp = PlayerPrefs.GetString ("Temp");
 		string[] TempSplit = Temp.Split ("|");
@@ -42,3 +42,5 @@ public class Leaderboard : MonoBehaviour {
 
 	}
 
+*/
+}

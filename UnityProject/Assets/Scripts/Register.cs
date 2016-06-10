@@ -41,11 +41,11 @@ namespace EH.LPNM
 				StringComplete = StringComplete + LetterVisual;
 				NamePlayer.text = StringComplete;
 			}
-		} else {
+		} /*else {
 				PlayerPrefs.SetString ("Temp", StringComplete + "|" + gc.scoreCounter.ToString);
 				PlayerPrefs.Save();
 		}
-        
+        */
 
     }
 
