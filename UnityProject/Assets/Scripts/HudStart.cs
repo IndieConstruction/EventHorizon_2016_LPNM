@@ -22,7 +22,7 @@ namespace EH.LPNM
 
         public void LoadFirstScene()
         {
-            SceneManager.LoadScene("ProjectLPNM");
+            SceneManager.LoadScene("LevelOne");
 
         }
         

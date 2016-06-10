@@ -7,6 +7,7 @@ namespace EH.LPNM{
         public TextMesh DebugText;
 		GameController gc;
         Animator animator;
+	
 
 	    public string Letter;
 	    public MeshFilter[] MeshesLetter;
@@ -98,6 +99,15 @@ namespace EH.LPNM{
                 }
             }
         }
+		public void ActiveMagneticManager(float MagneticFieldDuration){
+			MagneticFieldManager mfm = GetComponentInChildren<MagneticFieldManager>();
+			if (!mfm) {
+				return;
+			}else {
+				mfm.StartMagneticField(MagneticFieldDuration);
+			}	
+
+		}
     }
 }
 	

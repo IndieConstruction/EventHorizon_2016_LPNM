@@ -145,10 +145,9 @@ public class GameController : MonoBehaviour {
             //	if(p.PlayerLife<=0){
           if (scoreCounter >= Score4NextLevel)
           {
-               Complete = true;
+            Complete = true;
+			SceneManager.LoadScene("LevelTwo");
           }
-       //     Debug.Log("GameOver");
-
 				//}
          /*   if (scoreCounter >= Score4NextLevel)
             {
