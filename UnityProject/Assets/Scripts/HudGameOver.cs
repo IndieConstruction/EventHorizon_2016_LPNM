@@ -44,9 +44,9 @@ namespace EH.LPNM
         /// <summary>
         /// Carica la prima scena
         /// </summary>
-        public void LoadFirstScene()
+        public void LoadCurrentScene()
         {
-            SceneManager.LoadScene("ProjectLPNM");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         /// <summary>
         /// carica la scena contenuto in LoadLevel

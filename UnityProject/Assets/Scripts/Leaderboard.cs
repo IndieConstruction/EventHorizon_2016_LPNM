@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class Leaderboard : MonoBehaviour {
-	public string[] LeaderboardPoint= new string[10];
+    public ArrayList LeaderboardPoint=new ArrayList(10);
 	private string Save;
-	// Use this for initialization
-	void Start () {
-	
-	}
+
+    void Start () {
+     
+        }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,7 +19,7 @@ public class Leaderboard : MonoBehaviour {
 		}
 	}*/
 
-	void GetRegister(){
+public void GetRegister(){
 	/*	Temp = PlayerPrefs.GetString ("Temp");
 		string[] TempSplit = Temp.Split ("|");
 		string TempName = TempSplit [0];
@@ -27,26 +27,54 @@ public class Leaderboard : MonoBehaviour {
 */
 		string TempName="",TempScore="";
 		SplitTemp("Temp",'|',TempName,TempScore);
+        int n = 0;
+        if (LeaderboardPoint.Count>0)
+        {
+            foreach (string Point in LeaderboardPoint)
+            {
+                string TempPointScore = PlayerPrefs.GetString(Point);
+                //	SplitTemp (Point, '|', TempPointName, TempPointScore);
 
-		foreach (string Point in LeaderboardPoint) {
-			string TempName2="", TempScore2="";
-			SplitTemp (Point, '|', TempName2, TempScore2);
+                if (TempScore.CompareTo(TempPointScore)>0)
+                {
+                    // PlayerPrefs.SetString(NameArrayLeaderboard + n, TempScore+"|"+TempName);
+                    Save = Point;
+                    break;
+                }
+            }
 
-			if (int.Parse(TempScore) > int.Parse(TempScore2)) {
-				Save = Point;
-				break;
-			}
-		}
-
+            OrderArray(LeaderboardPoint, Save, TempName);
+            PlayerPrefs.SetString(TempName, TempScore);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            LeaderboardPoint.Add(TempName);
+            PlayerPrefs.SetString(TempName, TempScore);
+            PlayerPrefs.Save();
+        }
 
 
 
 
 	}
 
-		void OrderArray()
+ public void StampArray()
+    {
+        GetRegister();
+
+        //   foreach (string Point in LeaderboardPoint)
+       for(int i=0;i<LeaderboardPoint.Count;i++)
+        {
+            Debug.Log("Name: "+LeaderboardPoint[i]+" Point: "+PlayerPrefs.GetString(LeaderboardPoint[i].ToString()));
+        }
+
+    }
+
+		void OrderArray(ArrayList Array,string Obj,string ObjAdd)
 		{
-						
+            Array.Insert(Array.IndexOf(Obj), ObjAdd);
+        					
 		}
 
 	void SplitTemp(string str, char del, string temp1, string temp2)
