@@ -4,8 +4,8 @@ namespace EH.LPNM
 {
     public class Malus : MonoBehaviour{
 
-        Player p;
-        GameController gc;
+       public Player p;
+       public GameController gc;
         public int DamageToDo;
         // Use this for initialization
         void Start()

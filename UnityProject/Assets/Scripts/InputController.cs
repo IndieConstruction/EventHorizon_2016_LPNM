@@ -29,7 +29,8 @@ namespace EH.LPNM{
                 Debug.Log("togli pausa");
                 gc.PauseActive();
             }
-
+            if (gc.StopInput == true) //se false blocca gli input
+             ChangeShape(); //Permette di cambiare Lettera
         }
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -37,7 +38,7 @@ namespace EH.LPNM{
             {
                
 
-                ChangeShape();
+                //ChangeShape();
                 //check if the screen is touched / clicked   
                 //	if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
                 //{
