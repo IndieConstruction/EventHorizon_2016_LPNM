@@ -42,7 +42,7 @@ namespace EH.LPNM
 				NamePlayer.text = StringComplete;
 			}
 		} else {
-				PlayerPrefs.SetString ("Temp", StringComplete + "|" + gc.scoreCounter.ToString());
+				PlayerPrefs.SetString ("Temp", StringComplete + '|' + gc.scoreCounter.ToString());
 				PlayerPrefs.Save();
 		}
       

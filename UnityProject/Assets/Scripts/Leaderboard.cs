@@ -6,8 +6,10 @@ public class Leaderboard : MonoBehaviour {
 	private string Save;
 
     void Start () {
-     
-        }
+		for (int i = 0; i < 10; i++)
+			LeaderboardPoint.Insert (i, i + "");
+	}
+        
 	
 	// Update is called once per frame
 	void Update () {
@@ -26,15 +28,19 @@ public void GetRegister(){
 		string TempScore = TempSplit [1];
 */
 		string TempName="",TempScore="";
-		SplitTemp("Temp",'|',TempName,TempScore);
-        int n = 0;
+		TempName=	ReturnName ("Temp", '|');
+		TempScore=	ReturnScore ("Temp", '|');
+	//	SplitTemp("Temp",'|',TempName,TempScore);
+    //    int n = 0;
         if (LeaderboardPoint.Count>0)
         {
+			int n = 0;
             foreach (string Point in LeaderboardPoint)
             {
-                string TempPointScore = PlayerPrefs.GetString(Point);
+				string TempPointScore = PlayerPrefs.GetString(LeaderboardPoint.IndexOf(Point)+"");
                 //	SplitTemp (Point, '|', TempPointName, TempPointScore);
-
+				TempPointScore=	ReturnScore (n+"", '|');
+				n++;
                 if (TempScore.CompareTo(TempPointScore)>0)
                 {
                     // PlayerPrefs.SetString(NameArrayLeaderboard + n, TempScore+"|"+TempName);
@@ -42,15 +48,24 @@ public void GetRegister(){
                     break;
                 }
             }
+			if (Save != null) {
+				
+				OrderArray (LeaderboardPoint, Save, TempName);
+				PlayerPrefs.SetString (LeaderboardPoint.IndexOf(Save)+"",TempName+'|'+ TempScore);
+				PlayerPrefs.Save ();
 
-            OrderArray(LeaderboardPoint, Save, TempName);
-            PlayerPrefs.SetString(TempName, TempScore);
-            PlayerPrefs.Save();
-        }
+			} else if (LeaderboardPoint.Count < 10) {
+				int count = LeaderboardPoint.Count+1;
+				LeaderboardPoint.Add(count);
+				PlayerPrefs.SetString(count+"", TempName+'|'+ TempScore);
+				PlayerPrefs.Save();
+			}
+		}
         else
         {
-            LeaderboardPoint.Add(TempName);
-            PlayerPrefs.SetString(TempName, TempScore);
+			int count = LeaderboardPoint.Count;
+			LeaderboardPoint.Add(count);
+			PlayerPrefs.SetString(count+"", TempName+'|'+ TempScore);
             PlayerPrefs.Save();
         }
 
@@ -59,14 +74,17 @@ public void GetRegister(){
 
 	}
 
+	public void RenamePrefs(){
+	}
+
  public void StampArray()
     {
         GetRegister();
 
         //   foreach (string Point in LeaderboardPoint)
-       for(int i=0;i<LeaderboardPoint.Count;i++)
+       for(int i=0;i<LeaderboardPoint.Count-1;i++)
         {
-            Debug.Log("Name: "+LeaderboardPoint[i]+" Point: "+PlayerPrefs.GetString(LeaderboardPoint[i].ToString()));
+			Debug.Log("Name: "+ReturnName(i+"",'|')+" Point: "+ReturnScore(i+"",'|'));
         }
 
     }
@@ -85,6 +103,19 @@ public void GetRegister(){
 		temp2 = TempSplit [1];
 	}
 
+	string ReturnName(string str, char del)
+	{
+		string temp = PlayerPrefs.GetString (str);
+		string[] TempSplit = temp.Split (del);
+		return TempSplit [0];
+	}
+
+	string ReturnScore(string str, char del)
+	{
+		string temp = PlayerPrefs.GetString (str);
+		string[] TempSplit = temp.Split (del);
+		return TempSplit [1];
+	}
 
 	}
 
