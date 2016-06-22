@@ -7,9 +7,12 @@ public class Propeller : Malus  {
 		public float speed = 1;
 
 	// Use this for initialization
-	void Start () {
-	
-	}
+	void Start ()
+        {
+            gc = FindObjectOfType<GameController>();
+            p = FindObjectOfType<Player>();
+
+        }
 	
 	// Update is called once per frame
 	void Update () {
