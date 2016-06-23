@@ -41,6 +41,7 @@ namespace EH.LPNM
 
         }
 
+    
         /// <summary>
         /// Carica la prima scena
         /// </summary>
