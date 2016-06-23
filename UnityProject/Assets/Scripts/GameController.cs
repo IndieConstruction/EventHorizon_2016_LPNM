@@ -6,13 +6,16 @@ public class GameController : MonoBehaviour {
 	#region
 	public delegate void GameEvent();
 	//eventi base del gioco.
+	
+	public static event GameEvent OnPlayerDeath;
+	public static event GameEvent OnPlayerShape;
+
+	public static event GameEvent OnGamePause;
 	public static event GameEvent OnGameStart;
 	public static event GameEvent OnGameEnd;
 	public static event GameEvent OnLoadLevel;
-	public static GameEvent OnLoadLevelComplete;
 	public static event GameEvent OnPlayLevel;
 	public static event GameEvent OnLevelEnd;
-
 	public static event GameEvent OnGameWin;
 	// evento che fa partire il gioco/livello
 
@@ -33,6 +36,7 @@ public class GameController : MonoBehaviour {
 	
 	public bool GameIsFreeze;
     public static string LevelName;
+	FMOD_SoundManager fm;
     HudManager Hd;
     SoundController sc;
 	Player p;
@@ -62,7 +66,7 @@ public class GameController : MonoBehaviour {
         // Use this for initialization
 
     
-                void Awake(){
+    void Awake(){
 			Multiplier = 0;
 			DontDestroyOnLoad(this.gameObject);
 
@@ -81,12 +85,43 @@ public class GameController : MonoBehaviour {
 			sc = FindObjectOfType<SoundController>();
             StartInputAndTime();
 			iC.enabled = false;
+			GameController_OnGameStart();
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
 	}
+		void OnDisbale(){
+			GameController.OnGamePause -= GameController_OnGamePause;
+			GameController.OnGameStart -= GameController_OnGameStart;
+			GameController.OnGameOver -= GameController_OnGameOver;
+			GameController.OnLevelEnd -= GameController_OnLevelEnd;
+		}
+		void OnEnable(){
+			GameController.OnLevelEnd += GameController_OnLevelEnd;
+			GameController.OnGamePause += GameController_OnGamePause;
+			GameController.OnGameStart += GameController_OnGameStart;
+			GameController.OnGameOver += GameController_OnGameOver;
+		}
 
+		void GameController_OnLevelEnd ()
+		{
+			fm.PlayerGoal();
+		}
 
+		void GameController_OnGameOver ()
+		{
+			fm.Music();
+		}
+
+		void GameController_OnGameStart ()
+		{
+			fm.Countdown();
+		}
+
+		void GameController_OnGamePause ()
+		{
+			fm.MenuPauseInOut();
+		}
 
 
 	
@@ -112,6 +147,7 @@ public class GameController : MonoBehaviour {
             if (p.PlayerLife <= 0)
             {
                // EndLevelComplete();
+				p.GameController_OnPlayerDeath();
                 StopInputAndTime();
                 CompleteLevelActive();
             }
@@ -161,7 +197,7 @@ public class GameController : MonoBehaviour {
         /// Ferma input mouse e tempo del gioco
         /// </summary>
         public void StopInputAndTime()
-        {
+		{ GameController_OnGamePause();
             StopInput = false;
                if (Time.timeScale == 1.0F)
                      Time.timeScale = 0F;
@@ -170,7 +206,7 @@ public class GameController : MonoBehaviour {
         /// Starta input mouse e tempo del gioco
         /// </summary>
         public void StartInputAndTime()
-        {
+		{ GameController_OnGamePause();
             StopInput = true;
             Time.timeScale = 1.0F;
         }
@@ -221,15 +257,16 @@ public class GameController : MonoBehaviour {
 			b = FindObjectOfType<Bonus>();
 			switch (vote) {
 			case CollisionController.Vote.Perfect :
+				p.GameController_OnPerfectCollision();
 				sc.GameController_OnPerfectCollision();
 				Multiplier = Multiplier +2;
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
 				Hd.UpdateHud();
-
 				break;
 			case CollisionController.Vote.Good:
+				p.GameController_OnGoodCollision();
 				sc.GameController_OnGoodCollision();
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
@@ -238,12 +275,14 @@ public class GameController : MonoBehaviour {
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.Poor:
+				p.GameController_OnPoorCollision();
 				sc.GameController_OnPoorCollision();
 				Multiplier = 0;
 				BonusScore = "POOR!";
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.wrongLetter:
+				p.GameController_OnWrongLetter();
 				if(b.IsShield == false){
 				sc.GameController_OnWrongLetter();
 				Multiplier = 0;

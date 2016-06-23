@@ -4,22 +4,84 @@ namespace EH.LPNM{
     public class Player : MonoBehaviour {
 
         public bool UseGraphic;
-        public TextMesh DebugText;
+        //public TextMesh DebugText;
 		GameController gc;
         Animator animator;
-	
+		FMOD_SoundManager fm;
 
 	    public string Letter;
 	    public MeshFilter[] MeshesLetter;
         public int PlayerLife;
 
    void Start(){
-			
+			fm =FindObjectOfType<FMOD_SoundManager>();
             animator = GetComponentInChildren <Animator>();
 			gc = FindObjectOfType<GameController>();
-		
+			OnEnable();
 	
 	}
+		/// <summary>
+		/// Raises the disable event.Da inserire nell'evento di NextLevel
+		/// </summary>
+		public void OnDisable(){
+			GameController.OnBonusTaken -= GameController_OnBonusTaken;
+			GameController.OnPlayerDeath -= GameController_OnPlayerDeath;
+			GameController.OnPerfectCollision -= GameController_OnPerfectCollision;
+			GameController.OnGoodCollision -= GameController_OnGoodCollision;
+			GameController.OnPoorCollision -= GameController_OnPoorCollision;
+			GameController.OnWrongLetter -= GameController_OnWrongLetter;
+			GameController.OnPlayerShape -= GameController_OnPlayerShape;
+		}
+		void OnEnable(){
+			GameController.OnBonusTaken += GameController_OnBonusTaken;
+			GameController.OnPlayerDeath += GameController_OnPlayerDeath;
+			GameController.OnPerfectCollision += GameController_OnPerfectCollision;
+			GameController.OnGoodCollision += GameController_OnGoodCollision;
+			GameController.OnPoorCollision += GameController_OnPoorCollision;
+			GameController.OnWrongLetter += GameController_OnWrongLetter;
+			GameController.OnPlayerShape += GameController_OnPlayerShape;
+		}
+
+		void GameController_OnPlayerShape ()
+		{
+			fm.PlayerShape();
+		}
+
+
+
+		public void GameController_OnWrongLetter ()
+		{
+			fm.PlayerDoorWrong();
+		}
+
+		public void GameController_OnPoorCollision ()
+		{
+			fm.PlayerDoorPoor();
+
+		}
+
+		public void GameController_OnGoodCollision ()
+		{
+			fm.PlayerDoorGood();
+
+		}
+
+		public void GameController_OnPerfectCollision ()
+		{
+			fm.PlayerDoorPerfect();
+		}
+
+
+
+   public void GameController_OnPlayerDeath ()
+   {
+			fm.PlayerDeath();
+   }
+
+   void GameController_OnBonusTaken ()
+   {
+			fm.PlayerObjectHit();
+   }
 			
 	void Update(){
 
@@ -46,9 +108,10 @@ namespace EH.LPNM{
 
 	public void MeshChange(string rightLetter)
         {
-            DebugText.gameObject.SetActive(!UseGraphic);
-            DebugText.text = rightLetter;
-
+            //DebugText.gameObject.SetActive(!UseGraphic);
+            //DebugText.text = rightLetter;
+			animator.SetInteger("LetterNumber", 0);
+			GameController_OnPlayerShape();
             if (UseGraphic==true)
             {
                 SkinnedMeshRenderer rightMeshLetter;
