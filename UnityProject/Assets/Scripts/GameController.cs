@@ -105,22 +105,22 @@ public class GameController : MonoBehaviour {
 
 		void GameController_OnLevelEnd ()
 		{
-			fm.PlayerGoal();
+			//fm.PlayerGoal();
 		}
 
 		void GameController_OnGameOver ()
 		{
-			fm.Music();
+			//fm.Music();
 		}
 
 		void GameController_OnGameStart ()
 		{
-			fm.Countdown();
+			//fm.Countdown();
 		}
 
 		void GameController_OnGamePause ()
 		{
-			fm.MenuPauseInOut();
+			//fm.MenuPauseInOut();
 		}
 
 
