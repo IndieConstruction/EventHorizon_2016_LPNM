@@ -42,13 +42,15 @@ public class GameController : MonoBehaviour {
 	Player p;
 	Letter l;
 	InputController iC;
+    Start st;
+
 	public int Level ;
 	
 //	public GameObject[] ObstacleLettersPrefabs;
 //	public GameObject[] PlayerPrefabs;
 	Vector3 posPlayer;
 	float timeToStart= 0.0f;
-	public float StartGame; // 
+	public float StartGame=0; // 
 	public int scoreCounter; // Punteggio del gioco
 	public int Score4NextLevel;
 	private string BonusScore; 
@@ -58,6 +60,7 @@ public class GameController : MonoBehaviour {
     public string LoadLevel; //variabile nome scena livello successivo
     public bool StopInput = true; //variabile per fermare gli input
 	public bool Complete = false; //livello superato o meno
+    float timeDiv = 0f; //variabile per il calcolo del tempismo di ReadySteadyGo
 
 
         //public Transform[] LettersSpawnPoints;
@@ -79,7 +82,11 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
-			
+            if (StartGame != 0)
+            {
+                timeDiv = StartGame / 3;
+            }
+            st = FindObjectOfType<Start>();
 			iC = FindObjectOfType<InputController>();
             Hd = FindObjectOfType <HudManager>();
 			sc = FindObjectOfType<SoundController>();
@@ -130,9 +137,14 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+            if(StartGame!=0)
+            {
+                timeDiv = StartGame / 4;
+            }
 
             if (timeToStart <= StartGame){
 				fm.Countdown();
+                StartReadyGo();
 				//StartGame = StartGame + Time.deltaTime;
 				timeToStart = timeToStart + Time.deltaTime;
 				Debug.Log("Inizio a contare" + timeToStart);
@@ -157,6 +169,28 @@ public class GameController : MonoBehaviour {
 
     }
 
+
+        void StartReadyGo()
+        {
+			if (timeDiv > timeToStart)
+            { st.Ready_set(); }
+			else if (timeDiv*2 > timeToStart)
+            {
+                st.Ready_unset();
+                st.Steady_set();
+            }
+			else if (timeDiv*3 > timeToStart)
+            {
+                st.Steady_unset();
+                st.Go_set();
+
+            }
+			else if (timeDiv*4 > timeToStart)
+            {
+                st.Go_unset();
+            }
+                
+        }
 
         //Spawn generale
     public static void Spawn(GameObject objectToSpawn, Vector3 positionToSpawn){
