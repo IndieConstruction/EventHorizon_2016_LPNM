@@ -5,7 +5,7 @@
             <value>Player_doorPerfect</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{fa6605bc-c2f6-4aa5-a929-cd00c114a686}</destination>
@@ -123,7 +123,14 @@
             <destination>{9be01cd5-5a0c-469d-943c-66229f18f86c}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{960fda3d-62d6-416f-8a27-1bdaf1083216}"/>
+    <object class="MixerBusPanner" id="{960fda3d-62d6-416f-8a27-1bdaf1083216}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{ba71abc3-976e-4c82-9e31-99c1abacb67d}"/>
     <object class="RandomizerModulator" id="{e1236e47-8bab-4893-b8bc-3ba8e1e31ad2}">
         <property name="nameOfPropertyBeingModulated">

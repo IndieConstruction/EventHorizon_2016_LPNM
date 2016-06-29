@@ -5,7 +5,7 @@
             <value>Player_doorPoor</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{3ad43100-bba2-4932-9409-e60b2d55bd65}</destination>
@@ -123,7 +123,14 @@
             <destination>{180892f6-0e4a-4829-b79b-9a490c054b3c}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{f85eb703-6239-4c12-93ec-15239bd6c3aa}"/>
+    <object class="MixerBusPanner" id="{f85eb703-6239-4c12-93ec-15239bd6c3aa}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{fe8fdfef-3ad8-441d-aa46-65afe2cb27bb}"/>
     <object class="RandomizerModulator" id="{813a9d0f-26d4-48d5-9ec1-3c92fca74287}">
         <property name="nameOfPropertyBeingModulated">

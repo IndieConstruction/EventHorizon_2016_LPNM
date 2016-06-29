@@ -5,7 +5,7 @@
             <value>Menu_select</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{2b16fa83-f54c-4c60-81ce-f3d0e8c2a07d}</destination>
@@ -123,7 +123,14 @@
             <destination>{3ebe917d-f67b-4bae-84f8-833aa91b9f39}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{81ec8ce0-4f22-4b5c-a77b-1eca13d37553}"/>
+    <object class="MixerBusPanner" id="{81ec8ce0-4f22-4b5c-a77b-1eca13d37553}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{32fb10f0-178a-47d1-af0f-dc4bd78beb40}"/>
     <object class="RandomizerModulator" id="{aa5bc90e-5df1-4bb7-a72f-63e93ffc608a}">
         <property name="nameOfPropertyBeingModulated">

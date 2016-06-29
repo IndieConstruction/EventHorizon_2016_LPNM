@@ -5,7 +5,7 @@
             <value>pause_inOut</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{2da758e8-f04c-419a-88ef-aa687707b445}</destination>
@@ -59,11 +59,18 @@
     <object class="EventAutomatableProperties" id="{e07fe4aa-249c-4346-ac36-b71823a3d422}"/>
     <object class="MarkerTrack" id="{19e12599-7bef-490b-845b-6a90e4cf49c6}"/>
     <object class="GroupTrack" id="{47a81792-3961-4060-a536-019ddf54ae4f}">
+        <relationship name="modules">
+            <destination>{58271a76-8d6f-4d96-902a-9934bd2aa1d3}</destination>
+        </relationship>
         <relationship name="mixerGroup">
             <destination>{59174442-e8f5-409d-8878-954dffda2ece}</destination>
         </relationship>
     </object>
-    <object class="Timeline" id="{6ea61896-ee84-478b-9e95-1bf8837edef9}"/>
+    <object class="Timeline" id="{6ea61896-ee84-478b-9e95-1bf8837edef9}">
+        <relationship name="modules">
+            <destination>{58271a76-8d6f-4d96-902a-9934bd2aa1d3}</destination>
+        </relationship>
+    </object>
     <object class="EventMixerMaster" id="{385e35b1-4710-4d4a-a7ec-0b29176927bb}">
         <relationship name="effectChain">
             <destination>{d96f5548-362b-48f2-b0aa-66038941a078}</destination>
@@ -81,6 +88,17 @@
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{23310f14-e466-4c76-ba03-aa3c0aecce7c}"/>
+    <object class="SingleSound" id="{58271a76-8d6f-4d96-902a-9934bd2aa1d3}">
+        <property name="start">
+            <value>0</value>
+        </property>
+        <property name="length">
+            <value>1.2</value>
+        </property>
+        <relationship name="audioFile">
+            <destination>{4ff8e0a2-b60a-40a6-9a48-5f160020b897}</destination>
+        </relationship>
+    </object>
     <object class="EventMixerGroup" id="{59174442-e8f5-409d-8878-954dffda2ece}">
         <property name="name">
             <value>Audio 1</value>
@@ -102,7 +120,14 @@
             <destination>{61dd322a-5751-475d-a301-af9417325544}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{096495b8-5b29-458e-89e6-1a453ddc97b0}"/>
+    <object class="MixerBusPanner" id="{096495b8-5b29-458e-89e6-1a453ddc97b0}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{e034b985-bf80-4d5b-b580-527340348429}"/>
     <object class="MixerBusEffectChain" id="{8f86002e-4938-437b-9ad6-999ccbc0597c}">
         <relationship name="effects">

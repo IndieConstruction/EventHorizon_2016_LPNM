@@ -50,7 +50,6 @@ namespace FMODUnity
             buttonStyle.padding.top = 1;
             buttonStyle.padding.bottom = 1;
 
-
             Rect addRect = new Rect(position.x + position.width - addIcon.width - 7, position.y, addIcon.width + 7, baseHeight);
             Rect openRect = new Rect(addRect.x - openIcon.width - 7, position.y, openIcon.width + 6, baseHeight);
             Rect searchRect = new Rect(openRect.x - browseIcon.width - 9, position.y, browseIcon.width + 8, baseHeight);

@@ -2,10 +2,10 @@
 <objects serializationModel="Studio.01.08.00">
     <object class="Event" id="{10e383e2-fa58-4641-8a8b-a31eb72681c8}">
         <property name="name">
-            <value>Player_ReadySteadyGo</value>
+            <value>counter_in</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{4750d719-b9b6-43a7-81e6-9349402e1b10}</destination>
@@ -120,7 +120,14 @@
             <destination>{66fe11c4-6754-46e4-bcc2-6f162d4e72f1}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{c8d0ac63-fc8d-4414-b43a-f756da069133}"/>
+    <object class="MixerBusPanner" id="{c8d0ac63-fc8d-4414-b43a-f756da069133}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{9cc5eff4-26eb-41bc-9832-26fe0b0ea77f}"/>
     <object class="MixerBusEffectChain" id="{f4d9c117-7708-4777-9c52-aece238bdd02}">
         <relationship name="effects">

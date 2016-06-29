@@ -5,7 +5,7 @@
             <value>Player_coins</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{abc27d64-3b0e-493e-81ee-f3071da27bed}</destination>
@@ -93,7 +93,7 @@
             <value>0</value>
         </property>
         <property name="length">
-            <value>0.5</value>
+            <value>0.45000000000000001</value>
         </property>
         <relationship name="audioFile">
             <destination>{f155af6d-87f0-42a5-8ba6-48c38077a433}</destination>
@@ -120,7 +120,14 @@
             <destination>{9987837b-51e6-4271-8706-ce1329d1dd5e}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{c021186e-acf8-41f2-8c72-d0021a319b58}"/>
+    <object class="MixerBusPanner" id="{c021186e-acf8-41f2-8c72-d0021a319b58}">
+        <property name="overridingOutputFormat">
+            <value>1</value>
+        </property>
+        <property name="outputFormatOverridden">
+            <value>true</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{bd2afec7-285c-4f7f-9190-e84a020f906c}"/>
     <object class="MixerBusEffectChain" id="{f80215df-3d2b-415c-bc33-f6dd488946ed}">
         <relationship name="effects">
