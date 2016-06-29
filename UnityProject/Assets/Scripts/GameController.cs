@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour {
 			iC.enabled = false;
 			GameController_OnGameStart();
 			fm = FindObjectOfType<FMOD_SoundManager>();
-			fm.Music_Space(Multiplier);
+			fm.Ambience(Multiplier);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
 
             if (timeToStart <= StartGame){
+				fm.Countdown();
 				//StartGame = StartGame + Time.deltaTime;
 				timeToStart = timeToStart + Time.deltaTime;
 				Debug.Log("Inizio a contare" + timeToStart);
@@ -184,6 +185,7 @@ public class GameController : MonoBehaviour {
           if (scoreCounter >= Score4NextLevel)
           {
             Complete = true;
+
 		//	SceneManager.LoadScene("LevelTwo");
           }
 				//}
@@ -238,11 +240,13 @@ public class GameController : MonoBehaviour {
             if (Hd.Pa.gameObject.activeSelf==false)
             {
                 StopInputAndTime();
+				fm.MenuPauseInOut();
                 Hd.Pa.gameObject.SetActive(true);
             }
             else
             {              
                 Hd.Pa.gameObject.SetActive(false);
+				fm.MenuPauseInOut();
                 StartInputAndTime();
             }
         }
@@ -265,6 +269,7 @@ public class GameController : MonoBehaviour {
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
+				p.GameController_OnPerfectCollision();
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.Good:
@@ -274,6 +279,7 @@ public class GameController : MonoBehaviour {
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +500*Multiplier;
 				BonusScore = "GOOD!";
+				p.GameController_OnGoodCollision();
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.Poor:
@@ -281,6 +287,7 @@ public class GameController : MonoBehaviour {
 				sc.GameController_OnPoorCollision();
 				Multiplier = 0;
 				BonusScore = "POOR!";
+				p.GameController_OnPoorCollision();
 				Hd.UpdateHud();
 				break;
 			case CollisionController.Vote.wrongLetter:
@@ -289,14 +296,15 @@ public class GameController : MonoBehaviour {
 				sc.GameController_OnWrongLetter();
 				Multiplier = 0;
 				p.PlayerLife --;
-				Hd.UpdateHud();
+				p.GameController_OnWrongLetter();
+				fm.PlayerDoorWrong();
 				BonusScore = "WRONG LETTER!";}
 					break;
 			default:
 				break;
 			}
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
-			fm.Music_Space(Multiplier);
+			fm.Ambience(Multiplier);
 		}
 
        public void MultiplierLimiter() {

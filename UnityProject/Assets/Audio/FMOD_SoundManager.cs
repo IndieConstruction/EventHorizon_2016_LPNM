@@ -43,13 +43,13 @@ public class FMOD_SoundManager : MonoBehaviour {
     public string SND_Player_Death;
 
     // UI sounds
-    [EventRef]
-    public string SND_Menu_Scroll;
+//    [EventRef]
+//    public string SND_Menu_Scroll;
     [EventRef]
     public string SND_Menu_Select;
     [EventRef]
-    public string SND_Menu_Back;
-    [EventRef]
+//    public string SND_Menu_Back;
+//    [EventRef]
     public string SND_Menu_Pause_InOut;     // sound to be played both when entering AND exiting the Pause state
     
     // sound for countdown at the beginning of the level
@@ -207,24 +207,24 @@ public class FMOD_SoundManager : MonoBehaviour {
 		//SND_Player_Death.stop();
 		//RuntimeManager.PlayOneShot(SND_Player_Death);
 	}
-	public void MenuScroll(){
-		EventInstance EVT_SND_Menu_Scroll = RuntimeManager.CreateInstance(SND_Menu_Scroll);
-		EVT_SND_Menu_Scroll.start();
-		//SND_Menu_Scroll.stop();
-		//RuntimeManager.PlayOneShot(SND_Menu_Scroll);
-	}
+//	public void MenuScroll(){
+//		EventInstance EVT_SND_Menu_Scroll = RuntimeManager.CreateInstance(SND_Menu_Scroll);
+//		EVT_SND_Menu_Scroll.start();
+//		//SND_Menu_Scroll.stop();
+//		//RuntimeManager.PlayOneShot(SND_Menu_Scroll);
+//	}
 	public void MenuSelect(){
 		EventInstance EVT_SND_Menu_Select = RuntimeManager.CreateInstance(SND_Menu_Select);
 		EVT_SND_Menu_Select.start();
 		//SND_Menu_Select;.stop();
 		//RuntimeManager.PlayOneShot(SND_Menu_Select;;
 	}
-	public void MenuBack(){
-		EventInstance EVT_SND_Menu_Back = RuntimeManager.CreateInstance(SND_Menu_Back);
-		EVT_SND_Menu_Back.start();
-		//SND_Menu_Back.stop();
-		//RuntimeManager.PlayOneShot(SND_Menu_Back);
-	}
+//	public void MenuBack(){
+//		EventInstance EVT_SND_Menu_Back = RuntimeManager.CreateInstance(SND_Menu_Back);
+//		EVT_SND_Menu_Back.start();
+//		//SND_Menu_Back.stop();
+//		//RuntimeManager.PlayOneShot(SND_Menu_Back);
+//	}
 	public void MenuPauseInOut(){
 		EventInstance EVT_SND_Menu_Pause_InOut = RuntimeManager.CreateInstance(SND_Menu_Pause_InOut);
 			EVT_SND_Menu_Pause_InOut.start();
@@ -237,12 +237,18 @@ public class FMOD_SoundManager : MonoBehaviour {
 		//SNDSND_VO_Countdown.stop();
 		//RuntimeManager.PlayOneShot(SND_VO_Countdown);
 	}
-	public void Ambience(){
-		EventInstance EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Ambience);
+		EventInstance EVT_SND_Ambience = null;
+		public void Ambience(int Multiplier){
+			if(EVT_SND_Ambience == null){
+			EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Music_Space);
+			EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
 			EVT_SND_Ambience.start();
 		//SND_Ambience.stop();
 		//RuntimeManager.PlayOneShot(SND_Ambience);
-	}
+			}else{
+				EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
+			}
+		}
 //	public void Music(){
 //		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
 //		EVT_SND_Music.start();

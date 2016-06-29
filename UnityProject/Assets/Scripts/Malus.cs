@@ -4,6 +4,7 @@ namespace EH.LPNM
 {
     public class Malus : MonoBehaviour{
 
+		FMOD_SoundManager fm;
        public Player p;
        public GameController gc;
         public int DamageToDo;
@@ -12,7 +13,9 @@ namespace EH.LPNM
         {
             gc = FindObjectOfType<GameController>();
             p = FindObjectOfType<Player>();
+			fm = FindObjectOfType<FMOD_SoundManager>();
         }
+
 
         // Update is called once per frame
         void Update()
@@ -30,6 +33,7 @@ namespace EH.LPNM
                 else
                 {
                     p.PlayerLife -= DamageToDo;
+					fm.PlayerObjectHit();
                 }
 
             }

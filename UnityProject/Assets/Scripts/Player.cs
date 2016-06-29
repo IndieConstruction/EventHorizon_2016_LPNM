@@ -76,8 +76,9 @@ namespace EH.LPNM{
   
 		public void GameController_OnPlayerDeath ()
 		{
+			if (PlayerLife >= 0) {
 			fm.PlayerDeath();
-  
+			}
 		}
 
   
@@ -107,6 +108,7 @@ namespace EH.LPNM{
                 gc.EndLevelComplete();
                 gc.StopInputAndTime();
 				gc.CompleteLevelActive ();
+				fm.PlayerGoal();
 			}
 		}
 
@@ -176,6 +178,7 @@ namespace EH.LPNM{
 			}	
 
 		}
+
     }
 }
 	
