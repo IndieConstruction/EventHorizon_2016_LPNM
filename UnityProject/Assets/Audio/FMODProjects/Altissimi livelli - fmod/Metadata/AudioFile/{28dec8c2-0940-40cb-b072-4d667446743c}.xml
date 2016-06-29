@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{28dec8c2-0940-40cb-b072-4d667446743c}">
+        <property name="assetPath">
+            <value>jap ready steady go.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>4.6875056689342403</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{23077318-a9ef-408e-a1ef-37eafa106142}</destination>
+        </relationship>
+    </object>
+</objects>

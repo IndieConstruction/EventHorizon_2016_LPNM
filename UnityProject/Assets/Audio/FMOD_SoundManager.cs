@@ -19,16 +19,16 @@ public class FMOD_SoundManager : MonoBehaviour {
     // 2 = city
     [EventRef]
 	public string SND_Player_DoorWrong;
-    public string p_PlayerDoorWrong;
+  //  public string p_PlayerDoorWrong;
     [EventRef]
     public string SND_Player_DoorPoor;
-    public string p_PlayerDoorPoor;
+    //public string p_PlayerDoorPoor;
     [EventRef]
     public string SND_Player_DoorGood;
-    public string p_PlayerDoorGood;
+    //public string p_PlayerDoorGood;
     [EventRef]
     public string SND_Player_DoorPerfect;
-    public string p_PlayerDoorPerfect;
+    //public string p_PlayerDoorPerfect;
 
     // sound for player hitting an object
     [EventRef]
@@ -63,40 +63,40 @@ public class FMOD_SoundManager : MonoBehaviour {
     // 2 = city
     [EventRef]
     public string SND_Ambience;
-    public string p_Ambience_Setting;
+    //public string p_Ambience_Setting;
 
     // music and string for its parameter name
     // parameter p_Music_Setting values range from 0 to 2 and represent
     // 0 = space
     // 1 = tunnel
     // 2 = city
-    [EventRef]
-    public string SND_Music;
-    public string p_Music_Setting;
+    //[EventRef]
+   // public string SND_Music;
+    //public string p_Music_Setting;
     // value relative to SND_Music for selecting in which state we are, and its values ranges from 0 to 3 (int)
     // 0 = main menu
     // 1 = in-game
     // 2 = end-game
     // 3 = leaderboard
-    public string p_Music_GameState;
+    //public string p_Music_GameState;
 
     // music while in space and relative parameters
     // parameter p_MusicSpace_Multiplier values range from 0 to 4 (int) and represent the 5 steps of the score multiplier
     // parameter p_MusicSpace_Score values range from 0 to 4 (int) and each one is currentScore/musicScoreDelta, where the last int is defined below
     [EventRef]
     public string SND_Music_Space;
-    public string p_MusicSpace_Multiplier;
-    public string p_MusicSpace_Score;
-    
+//    public string p_MusicSpace_Multiplier;
+//    public string p_MusicSpace_Score;
+//    
     // music while in city and relative parameters
     // parameter p_MusicSpace_Multiplier values range from 0 to 4 (int) and represent the 5 steps of the score multiplier
     // parameter p_MusicSpace_Score values range from 0 to 4 (int) and each one is currentScore/musicScoreDelta, where the last int is defined below
-    [EventRef]
-    public string SND_Music_City;
-    public string p_MusicCity_Multiplier;
-    public string p_MusicCity_Score;
+//    [EventRef]
+//    public string SND_Music_City;
+//    public string p_MusicCity_Multiplier;
+//    public string p_MusicCity_Score;
 
-    public int musicScoreDelta;
+    //public int musicScoreDelta;
 
     /*
     // events for playing end of level music, menu music and leaderboard music
@@ -110,8 +110,8 @@ public class FMOD_SoundManager : MonoBehaviour {
     */
 
     
-    [EventRef]
-	public string SND_PlayerDimensionChanged;
+    //[EventRef]
+	//public string SND_PlayerDimensionChanged;
 
     void Start() {
  
@@ -169,6 +169,7 @@ public class FMOD_SoundManager : MonoBehaviour {
 		EVT_SND_Player_DoorWrong.start();
 		//EVT_SND_Player_DoorWrong.stop();
 		//RuntimeManager.PlayOneShot(SND_Player_Coin);
+		
 	}
 	public void PlayerDoorPoor(){
 		EventInstance EVT_SND_Player_DoorPoor = RuntimeManager.CreateInstance(SND_Player_DoorPoor);
@@ -242,11 +243,30 @@ public class FMOD_SoundManager : MonoBehaviour {
 		//SND_Ambience.stop();
 		//RuntimeManager.PlayOneShot(SND_Ambience);
 	}
-	public void Music(){
-		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
-		EVT_SND_Music.start();
-		//SND_Music.stop();
-		//RuntimeManager.PlayOneShot(SND_Music);
-		}
+//	public void Music(){
+//		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
+//		EVT_SND_Music.start();
+//		//SND_Music.stop();
+//		//RuntimeManager.PlayOneShot(SND_Music);
+//		}
+
+		EventInstance EVT_Music_Space = null;
+		public void Music_Space(int Multiplier){
+			if(EVT_Music_Space == null){
+				EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
+				EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+				EVT_Music_Space.start();
+			}else{
+				EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+			}
+
+			
+			//EVT_Music_Space.stop(STOP_MODE.IMMEDIATE);
+			//EVT_Music_Space.stop();
+			//RuntimeManager.PlayOneShot(EVT_Music_Space);
+  
+
+		
+}
 }
 }

@@ -8,6 +8,7 @@ namespace EH.LPNM
         HudManager hd;
         GameController gc;
         SoundController sc;
+		FMOD_SoundManager fm;
 
         public int BonusPoints;
         public int BonusMultiplier;
@@ -36,6 +37,7 @@ namespace EH.LPNM
             gc = FindObjectOfType<GameController>();
             hd = FindObjectOfType<HudManager>();
 			sc= FindObjectOfType<SoundController>();
+			fm = FindObjectOfType<FMOD_SoundManager>();
         }
 
 		void Start(){
@@ -78,7 +80,7 @@ namespace EH.LPNM
 			if(other.GetComponent<Player>() == null){
 				return;
 			}
-
+			fm.PlayerCoin();
 			float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
 			if (IsMagnetic == true) {
 				p.ActiveMagneticManager(BonusMagneticTimer);

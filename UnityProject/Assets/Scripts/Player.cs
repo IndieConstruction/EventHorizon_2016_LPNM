@@ -44,44 +44,49 @@ namespace EH.LPNM{
 
 		void GameController_OnPlayerShape ()
 		{
-			//fm.PlayerShape();
+			fm.PlayerShape();
 		}
 
 
 
 		public void GameController_OnWrongLetter ()
 		{
-			//fm.PlayerDoorWrong();
+			fm.PlayerDoorWrong();
 		}
 
 		public void GameController_OnPoorCollision ()
 		{
-			//fm.PlayerDoorPoor();
+			fm.PlayerDoorPoor();
 
 		}
 
 		public void GameController_OnGoodCollision ()
 		{
-			//fm.PlayerDoorGood();
+			fm.PlayerDoorGood();
 
 		}
 
 		public void GameController_OnPerfectCollision ()
 		{
-			//fm.PlayerDoorPerfect();
+			fm.PlayerDoorPerfect();
 		}
 
 
 
-   public void GameController_OnPlayerDeath ()
-   {
-			//fm.PlayerDeath();
-   }
+  
+		public void GameController_OnPlayerDeath ()
+		{
+			fm.PlayerDeath();
+  
+		}
 
-   void GameController_OnBonusTaken ()
-   {
-			//fm.PlayerObjectHit();
-   }
+  
+		void GameController_OnBonusTaken ()
+   
+		{
+			fm.PlayerObjectHit();
+  
+		}
 			
 	void Update(){
 

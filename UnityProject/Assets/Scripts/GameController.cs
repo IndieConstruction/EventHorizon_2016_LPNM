@@ -79,13 +79,15 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
-
+			
 			iC = FindObjectOfType<InputController>();
             Hd = FindObjectOfType <HudManager>();
 			sc = FindObjectOfType<SoundController>();
             StartInputAndTime();
 			iC.enabled = false;
 			GameController_OnGameStart();
+			fm = FindObjectOfType<FMOD_SoundManager>();
+			fm.Music_Space(Multiplier);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -105,12 +107,12 @@ public class GameController : MonoBehaviour {
 
 		void GameController_OnLevelEnd ()
 		{
-			//fm.PlayerGoal();
+			fm.PlayerGoal();
 		}
 
 		void GameController_OnGameOver ()
 		{
-			//fm.Music();
+		//	fm.Music();
 		}
 
 		void GameController_OnGameStart ()
@@ -294,6 +296,7 @@ public class GameController : MonoBehaviour {
 				break;
 			}
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
+			fm.Music_Space(Multiplier);
 		}
 
        public void MultiplierLimiter() {
