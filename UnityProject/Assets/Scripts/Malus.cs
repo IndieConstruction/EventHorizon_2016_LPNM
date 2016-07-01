@@ -4,9 +4,9 @@ namespace EH.LPNM
 {
     public class Malus : MonoBehaviour{
 
-		FMOD_SoundManager fm;
-       public Player p;
-       public GameController gc;
+	    public	FMOD_SoundManager fm;
+        public Player p;
+        public GameController gc;
         public int DamageToDo;
         // Use this for initialization
         void Start()

@@ -11,6 +11,7 @@ public class Propeller : Malus  {
         {
             gc = FindObjectOfType<GameController>();
             p = FindObjectOfType<Player>();
+            fm = FindObjectOfType<FMOD_SoundManager>();
 
         }
 	

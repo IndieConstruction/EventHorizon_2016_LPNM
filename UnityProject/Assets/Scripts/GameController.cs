@@ -148,7 +148,6 @@ public class GameController : MonoBehaviour {
                 StartReadyGo();
 				//StartGame = StartGame + Time.deltaTime;
 				timeToStart = timeToStart + Time.deltaTime;
-				Debug.Log("Inizio a contare" + timeToStart);
 
 			}
 			else {
