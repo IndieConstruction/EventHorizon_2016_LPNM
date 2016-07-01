@@ -240,7 +240,7 @@ public class FMOD_SoundManager : MonoBehaviour {
 		EventInstance EVT_SND_Ambience = null;
 		public void Ambience(int Multiplier){
 			if(EVT_SND_Ambience == null){
-			EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Music_Space);
+			EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Ambience);
 			EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
 			EVT_SND_Ambience.start();
 		//SND_Ambience.stop();
@@ -249,30 +249,47 @@ public class FMOD_SoundManager : MonoBehaviour {
 				EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
 			}
 		}
-//	public void Music(){
-//		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
-//		EVT_SND_Music.start();
-//		//SND_Music.stop();
-//		//RuntimeManager.PlayOneShot(SND_Music);
-//		}
 
-		EventInstance EVT_Music_Space = null;
-		public void Music_Space(int Multiplier){
-			if(EVT_Music_Space == null){
-				EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
-				EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
-				EVT_Music_Space.start();
-			}else{
-				EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
-			}
+        public void Ambience_Off()
+        {
+            EVT_SND_Ambience.stop(STOP_MODE.ALLOWFADEOUT);
+            //EVT_Music_Space.stop(STOP_MODE.IMMEDIATE);
+            //EVT_Music_Space.stop();
+            //RuntimeManager.PlayOneShot(EVT_Music_Space);
 
-			
-			//EVT_Music_Space.stop(STOP_MODE.IMMEDIATE);
-			//EVT_Music_Space.stop();
-			//RuntimeManager.PlayOneShot(EVT_Music_Space);
-  
 
-		
-}
+
+        }
+        //	public void Music(){
+        //		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
+        //		EVT_SND_Music.start();
+        //		//SND_Music.stop();
+        //		//RuntimeManager.PlayOneShot(SND_Music);
+        //		}
+
+        EventInstance EVT_Music_Space = null;
+        public void Music_Space(int Multiplier)
+        {
+            if (EVT_Music_Space == null)
+            {
+                EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
+                EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+                EVT_Music_Space.start();
+            }
+            else
+            {
+                EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+            }
+        }
+            public void Music_Space_Off()
+        {
+            EVT_Music_Space.stop(STOP_MODE.ALLOWFADEOUT);
+           //EVT_Music_Space.stop(STOP_MODE.IMMEDIATE);
+            //EVT_Music_Space.stop();
+            //RuntimeManager.PlayOneShot(EVT_Music_Space);
+
+
+
+        }
 }
 }

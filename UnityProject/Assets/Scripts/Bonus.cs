@@ -92,6 +92,7 @@ namespace EH.LPNM
             {
                 Debug.Log("Preso! "+ Vector3.Distance(this.transform.position, p.transform.position));
                 sc.HandleOnBonusTaken();
+                if(p.PlayerLife<3)
                 p.PlayerLife = p.PlayerLife + LifeToAdd;
                 gc.scoreCounter = gc.scoreCounter + BonusPoints;//aumento lo score
                 gc.Multiplier = gc.Multiplier + BonusMultiplier;//aumento del moltiplicatore

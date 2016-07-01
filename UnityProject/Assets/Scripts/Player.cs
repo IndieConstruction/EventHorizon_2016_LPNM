@@ -108,6 +108,8 @@ namespace EH.LPNM{
                 gc.EndLevelComplete();
                 gc.StopInputAndTime();
 				gc.CompleteLevelActive ();
+                fm.Music_Space_Off();
+                fm.Ambience_Off();
 				fm.PlayerGoal();
 			}
 		}

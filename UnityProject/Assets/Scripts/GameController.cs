@@ -95,6 +95,7 @@ public class GameController : MonoBehaviour {
 			GameController_OnGameStart();
 			fm = FindObjectOfType<FMOD_SoundManager>();
 			fm.Ambience(Multiplier);
+            fm.Music_Space(Multiplier);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -165,6 +166,8 @@ public class GameController : MonoBehaviour {
 				p.GameController_OnPlayerDeath();
                 StopInputAndTime();
                 CompleteLevelActive();
+                fm.Music_Space_Off();
+                fm.Ambience_Off();
             }
 
     }
