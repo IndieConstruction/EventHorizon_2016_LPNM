@@ -61,6 +61,10 @@ public class GameController : MonoBehaviour {
     public bool StopInput = true; //variabile per fermare gli input
 	public bool Complete = false; //livello superato o meno
     float timeDiv = 0f; //variabile per il calcolo del tempismo di ReadySteadyGo
+    bool Ready = true;
+    bool Steady = true;
+    bool Go = true;
+
 
 
         //public Transform[] LettersSpawnPoints;
@@ -68,8 +72,8 @@ public class GameController : MonoBehaviour {
         //float TimerXObstacle;
         // Use this for initialization
 
-    
-    void Awake(){
+
+        void Awake(){
 			Multiplier = 0;
 			DontDestroyOnLoad(this.gameObject);
 
@@ -95,7 +99,7 @@ public class GameController : MonoBehaviour {
 			GameController_OnGameStart();
 			fm = FindObjectOfType<FMOD_SoundManager>();
 			fm.Ambience(Multiplier);
-            fm.Music_Space(Multiplier);
+            fm.Music_Space(Multiplier,0);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -144,7 +148,7 @@ public class GameController : MonoBehaviour {
             }
 
             if (timeToStart <= StartGame){
-				fm.Countdown();
+			//	fm.Countdown();
                 StartReadyGo();
 				//StartGame = StartGame + Time.deltaTime;
 				timeToStart = timeToStart + Time.deltaTime;
@@ -175,16 +179,27 @@ public class GameController : MonoBehaviour {
         void StartReadyGo()
         {
 			if (timeDiv > timeToStart)
-            { st.Ready_set(); }
+            {
+                if(Ready)
+                fm.Ready();
+                st.Ready_set();
+                Ready = false;
+            }
 			else if (timeDiv*2 > timeToStart)
             {
                 st.Ready_unset();
+                if(Steady)
+                fm.Steady();
                 st.Steady_set();
+                Steady = false;
             }
 			else if (timeDiv*3 > timeToStart)
             {
                 st.Steady_unset();
+                if(Go)
+                fm.Go();
                 st.Go_set();
+                Go = false;
 
             }
 			else if (timeDiv*4 > timeToStart)
@@ -277,12 +292,17 @@ public class GameController : MonoBehaviour {
             {
                 StopInputAndTime();
 				fm.MenuPauseInOut();
+                fm.Music_Space(Multiplier, 1);
+                fm.Ambience_Off();
                 Hd.Pa.gameObject.SetActive(true);
             }
             else
             {              
                 Hd.Pa.gameObject.SetActive(false);
 				fm.MenuPauseInOut();
+             
+                fm.Music_Space(Multiplier, 0);
+                fm.Ambience(Multiplier);
                 StartInputAndTime();
             }
         }

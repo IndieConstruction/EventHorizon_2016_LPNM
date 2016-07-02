@@ -5,6 +5,7 @@ namespace EH.LPNM{
 
 	Player p;
     GameController gc;
+        FMOD_SoundManager fm;
 	private string TagName = "Terrain";
 	private bool flag = false;
 	//destination point
@@ -13,9 +14,11 @@ namespace EH.LPNM{
 	public float Speed = 20.0f;
 	//vertical position of the gameobject
 	private float yAxis;
+    private bool pause = false;
 	
 	void Start(){
-		//save the y axis value of gameobject
+            //save the y axis value of gameobject
+            fm = FindObjectOfType<FMOD_SoundManager>();
 		yAxis = gameObject.transform.position.y;
 		if(p==null){
 			p =FindObjectOfType<Player>();
@@ -26,7 +29,6 @@ namespace EH.LPNM{
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                Debug.Log("togli pausa");
                 gc.PauseActive();
             }
             if (gc.StopInput == true) //se false blocca gli input

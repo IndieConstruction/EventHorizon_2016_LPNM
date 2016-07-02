@@ -12,8 +12,10 @@ namespace EH.LPNM
     private string LetterVisual;
     private string StringComplete ="";
 	public GameController gc;
+        FMOD_SoundManager fm;
     // Use this for initialization
     void Start () {
+            fm = FindObjectOfType<FMOD_SoundManager>();
 			gc=FindObjectOfType<GameController>();
 	}
 	
@@ -22,12 +24,14 @@ namespace EH.LPNM
 
 		if (StringComplete.Length < 3) {//limite di lettere possibili
 			if (Input.GetKeyDown (KeyCode.UpArrow)) {//se entra, aumenta l'indice di riferimento all'array, cambiando di fatti lettera
+                    fm.MenuSelect();
 				if (Indice != Alphabet.Length - 1)
 					Indice++;
 				else // se l'indice raggiunge il limite, torna accapo
                     Indice = 0;
 			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {//se entra, diminuisce l'indice di riferimento all'array, cambiando di fatti lettera
-				if (Indice != 0)
+                    fm.MenuSelect();
+                    if (Indice != 0)
 					Indice--;
 				else // se l'indice raggiunge il limite, setta l'ultima lettera dell'array
                     Indice = Alphabet.Length - 1;

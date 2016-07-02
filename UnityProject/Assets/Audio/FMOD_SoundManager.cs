@@ -53,8 +53,8 @@ public class FMOD_SoundManager : MonoBehaviour {
     public string SND_Menu_Pause_InOut;     // sound to be played both when entering AND exiting the Pause state
     
     // sound for countdown at the beginning of the level
-    [EventRef]
-    public string SND_VO_Countdown;
+  //  [EventRef]
+    //public string SND_VO_Countdown;
 
     // ambience sound and string for its parameter name
     // parameter p_Ambience_Setting values range from 0 to 2 and represent
@@ -85,35 +85,53 @@ public class FMOD_SoundManager : MonoBehaviour {
     // parameter p_MusicSpace_Score values range from 0 to 4 (int) and each one is currentScore/musicScoreDelta, where the last int is defined below
     [EventRef]
     public string SND_Music_Space;
-//    public string p_MusicSpace_Multiplier;
-//    public string p_MusicSpace_Score;
-//    
-    // music while in city and relative parameters
-    // parameter p_MusicSpace_Multiplier values range from 0 to 4 (int) and represent the 5 steps of the score multiplier
-    // parameter p_MusicSpace_Score values range from 0 to 4 (int) and each one is currentScore/musicScoreDelta, where the last int is defined below
-//    [EventRef]
-//    public string SND_Music_City;
-//    public string p_MusicCity_Multiplier;
-//    public string p_MusicCity_Score;
+        //    public string p_MusicSpace_Multiplier;
+        //    public string p_MusicSpace_Score;
+        //    
+        // music while in city and relative parameters
+        // parameter p_MusicSpace_Multiplier values range from 0 to 4 (int) and represent the 5 steps of the score multiplier
+        // parameter p_MusicSpace_Score values range from 0 to 4 (int) and each one is currentScore/musicScoreDelta, where the last int is defined below
+        //    [EventRef]
+        //    public string SND_Music_City;
+        //    public string p_MusicCity_Multiplier;
+        //    public string p_MusicCity_Score;
 
-    //public int musicScoreDelta;
+        //public int musicScoreDelta;
 
-    /*
-    // events for playing end of level music, menu music and leaderboard music
-    // better use a parameter in SND_Music, which I added and it's called p_Music_GameState
-    [EventRef]
-    public string SND_Music_EndLevel;
-    [EventRef]
-    public string SND_Music_Menu;
-    [EventRef]
-    public string SND_Music_Leaderboard;
-    */
+        /*
+        // events for playing end of level music, menu music and leaderboard music
+        // better use a parameter in SND_Music, which I added and it's called p_Music_GameState
+        [EventRef]
+        public string SND_Music_EndLevel;
+        [EventRef]
+        public string SND_Music_Menu;
+        [EventRef]
+        public string SND_Music_Leaderboard;
+        */
 
-    
-    //[EventRef]
-	//public string SND_PlayerDimensionChanged;
 
-    void Start() {
+        //[EventRef]
+        //public string SND_PlayerDimensionChanged;
+
+        [EventRef]
+        public string SND_Steady;
+
+
+        [EventRef]
+        public string SND_Ready;
+
+
+        [EventRef]
+        public string SND_Go;
+
+        [EventRef]
+        public string SND_Music_End;
+
+        [EventRef]
+        public string SND_Music_Menu;
+
+
+        void Start() {
  
 		Sound_StartLevel();
     }
@@ -231,23 +249,21 @@ public class FMOD_SoundManager : MonoBehaviour {
 		//SND_Menu_Pause_InOut.stop();
 		//RuntimeManager.PlayOneShot(SND_Menu_Pause_InOut);
 	}
-	public void Countdown(){
-		EventInstance EVT_SND_VO_Countdown = RuntimeManager.CreateInstance(SND_VO_Countdown);
-			EVT_SND_VO_Countdown.start();
+ //   public void Countdown(){
+//		EventInstance EVT_SND_VO_Countdown = RuntimeManager.CreateInstance(SND_VO_Countdown);
+	//		EVT_SND_VO_Countdown.start();
 		//SNDSND_VO_Countdown.stop();
 		//RuntimeManager.PlayOneShot(SND_VO_Countdown);
-	}
+	//}
 		EventInstance EVT_SND_Ambience = null;
 		public void Ambience(int Multiplier){
-			if(EVT_SND_Ambience == null){
+		
 			EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Ambience);
 			EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
 			EVT_SND_Ambience.start();
 		//SND_Ambience.stop();
 		//RuntimeManager.PlayOneShot(SND_Ambience);
-			}else{
-				EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
-			}
+			
 		}
 
         public void Ambience_Off()
@@ -268,17 +284,19 @@ public class FMOD_SoundManager : MonoBehaviour {
         //		}
 
         EventInstance EVT_Music_Space = null;
-        public void Music_Space(int Multiplier)
+        public void Music_Space(int Multiplier,int Pause)
         {
             if (EVT_Music_Space == null)
             {
                 EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+                EVT_Music_Space.setParameterValue("pause", Pause);
                 EVT_Music_Space.start();
             }
             else
             {
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
+                EVT_Music_Space.setParameterValue("pause", Pause);
             }
         }
             public void Music_Space_Off()
@@ -291,5 +309,50 @@ public class FMOD_SoundManager : MonoBehaviour {
 
 
         }
-}
+
+        public void Steady()
+        {
+            EventInstance EVT_SND_Steady = RuntimeManager.CreateInstance(SND_Steady);
+            EVT_SND_Steady.start();
+           
+        }
+
+        public void Ready()
+        {
+            EventInstance EVT_SND_Ready = RuntimeManager.CreateInstance(SND_Ready);
+            EVT_SND_Ready.start();
+
+        }
+
+        public void Go()
+        {
+            EventInstance EVT_SND_Go = RuntimeManager.CreateInstance(SND_Go);
+            EVT_SND_Go.start();
+
+        }
+
+        public void Music_End()
+        {
+            EventInstance EVT_SND_Music_End = RuntimeManager.CreateInstance(SND_Music_End);
+            EVT_SND_Music_End.start();
+
+        }
+
+        EventInstance EVT_SND_Music_Menu = null;
+        public void Music_Menu()
+        {
+            if (EVT_SND_Music_Menu == null)
+            {
+                EVT_SND_Music_Menu = RuntimeManager.CreateInstance(SND_Music_Menu);
+                EVT_SND_Music_Menu.start();
+            }
+
+        }
+
+        public void Music_Menu_Off()
+        {
+            EVT_SND_Music_Menu.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+    }
 }

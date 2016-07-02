@@ -111,6 +111,7 @@ namespace EH.LPNM{
                 fm.Music_Space_Off();
                 fm.Ambience_Off();
 				fm.PlayerGoal();
+                fm.Music_End();
 			}
 		}
 
