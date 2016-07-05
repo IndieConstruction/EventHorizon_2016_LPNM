@@ -276,12 +276,12 @@ public class FMOD_SoundManager : MonoBehaviour {
 
 
         }
-        //	public void Music(){
-        //		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
-        //		EVT_SND_Music.start();
-        //		//SND_Music.stop();
-        //		//RuntimeManager.PlayOneShot(SND_Music);
-        //		}
+//        	public void Music(){
+//        		EventInstance EVT_SND_Music = RuntimeManager.CreateInstance(SND_Music);
+//        		EVT_SND_Music.start();
+//        		//SND_Music.stop();
+//        		//RuntimeManager.PlayOneShot(SND_Music);
+//        		}
 
         EventInstance EVT_Music_Space = null;
         public void Music_Space(int Multiplier,int Pause)

@@ -361,6 +361,7 @@ public class GameController : MonoBehaviour {
 			}
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
 			fm.Ambience(Multiplier);
+			fm.Music_Space (Multiplier, 0);
 		}
 
        public void MultiplierLimiter() {
