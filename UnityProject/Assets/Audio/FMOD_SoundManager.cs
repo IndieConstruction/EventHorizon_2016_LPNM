@@ -257,14 +257,20 @@ public class FMOD_SoundManager : MonoBehaviour {
 	//}
 		EventInstance EVT_SND_Ambience = null;
 		public void Ambience(int Multiplier){
-		
-			EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Ambience);
-			EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
-			EVT_SND_Ambience.start();
-		//SND_Ambience.stop();
-		//RuntimeManager.PlayOneShot(SND_Ambience);
-			
-		}
+            if (EVT_SND_Ambience == null)
+            {
+                EVT_SND_Ambience = RuntimeManager.CreateInstance(SND_Ambience);
+                EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
+                EVT_SND_Ambience.start();
+            }
+            else
+            {
+                EVT_SND_Ambience.setParameterValue("Multiplier", Multiplier);
+            }
+            //SND_Ambience.stop();
+            //RuntimeManager.PlayOneShot(SND_Ambience);
+
+        }
 
         public void Ambience_Off()
         {
