@@ -14,6 +14,8 @@ namespace EH.LPNM
         public Text PointDistanceText;
         public Text MultiplierText;
         public GameController gc;
+		public HudLevels HL;
+		public HudCredits HC;
         public HudGameOver HudGameOver; //hud game over
 		public HudGameOver HudCompleteLevel;
         public Pause Pa; //hud pausa
@@ -22,7 +24,8 @@ namespace EH.LPNM
 
         void Start()
         {
-
+			HL = FindObjectOfType<HudLevels> ();
+			HC = FindObjectOfType<HudCredits> ();
             p = FindObjectOfType<Player>();
             ScoreText.text = "Score : " + gc.scoreCounter;
             MultiplierText.text = "X" + gc.Multiplier;
