@@ -243,7 +243,7 @@ public class GameController : MonoBehaviour {
          /*   if (scoreCounter >= Score4NextLevel)
             {
                 SceneManager.LoadScene("LevelTwo");
-                // Application.LoadLevel("GameOver");
+               
                 Debug.Log("LevelTwo");
             }
             */
@@ -323,7 +323,7 @@ public class GameController : MonoBehaviour {
 				sc.GameController_OnPerfectCollision();
 				Multiplier = Multiplier +2;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +1000* Multiplier;
+                scoreCounter = scoreCounter +10000* Multiplier;
 				BonusScore = "PERFECT!";
 				p.GameController_OnPerfectCollision();
 				Hd.UpdateHud();
@@ -333,7 +333,7 @@ public class GameController : MonoBehaviour {
 				sc.GameController_OnGoodCollision();
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +500*Multiplier;
+                scoreCounter = scoreCounter +5000*Multiplier;
 				BonusScore = "GOOD!";
 				p.GameController_OnGoodCollision();
 				Hd.UpdateHud();

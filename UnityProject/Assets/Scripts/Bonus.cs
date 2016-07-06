@@ -12,11 +12,11 @@ namespace EH.LPNM
 
         public int BonusPoints;
         public int BonusMultiplier;
-        public int DistancePoint = 1;
-        public int DistanceSound = 2;
+		private int DistancePoint = 2;
+        private int DistanceSound = 3;
         public int LifeToAdd = 1;
-        private int TakeBonus = 1;
-        private int NearlyBonus = 2;
+        private int TakeBonus = 2;
+        private int NearlyBonus = 3;
         private int Nothing = 0;
         
 		bool isBonusActive;
@@ -81,7 +81,7 @@ namespace EH.LPNM
 				return;
 			}
 			fm.PlayerCoin();
-			float Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
+			int Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
 			if (IsMagnetic == true) {
 				p.ActiveMagneticManager(BonusMagneticTimer);
 			}
@@ -90,7 +90,7 @@ namespace EH.LPNM
 			}
             if (p != null && Distance == TakeBonus)
             {
-                Debug.Log("Preso! "+ Vector3.Distance(this.transform.position, p.transform.position));
+				Debug.Log("Preso! "+Distance);
                 sc.HandleOnBonusTaken();
                 if(p.PlayerLife<3)
                 p.PlayerLife = p.PlayerLife + LifeToAdd;
@@ -98,10 +98,10 @@ namespace EH.LPNM
                 gc.Multiplier = gc.Multiplier + BonusMultiplier;//aumento del moltiplicatore
                 hd.UpdateHud();//aggiorna l'hud
                 gc.MultiplierLimiter();//non deve superare il 10
-				foreach (var item in gameObject.GetComponentsInChildren<MeshRenderer>()) 
-				{ 
-					item.enabled = false;
-				}
+				//foreach (var item in gameObject.GetComponentsInChildren<MeshRenderer>()) 
+				//{ 
+				this.gameObject.SetActive(false);
+				//}
             }
             else if (Distance==NearlyBonus)
             {
