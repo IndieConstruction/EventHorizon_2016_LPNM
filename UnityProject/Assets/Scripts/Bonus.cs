@@ -10,6 +10,10 @@ namespace EH.LPNM
         SoundController sc;
 		FMOD_SoundManager fm;
 
+
+		//AudioSource audioSource;
+		public AudioClip audioClip;
+
         public int BonusPoints;
         public int BonusMultiplier;
 		private int DistancePoint = 2;
@@ -72,26 +76,32 @@ namespace EH.LPNM
 				if (bonusShieldTimer >= BonusShielTimer) {
 						IsShield = false;
 						bonusShieldTimer = 0;
+
 					}
 				}
        }
+
+
         
 		void OnTriggerEnter(Collider other) {
 			if(other.GetComponent<Player>() == null){
 				return;
 			}
-			fm.PlayerCoin();
+			//fm.PlayerCoin();
+			AudioSource audioSource = GetComponent<AudioSource>();
+			audioSource.PlayOneShot (audioClip);
 			int Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
 			if (IsMagnetic == true) {
 				p.ActiveMagneticManager(BonusMagneticTimer);
 			}
 			if (IsShield == true) {
+				isBonusActive = true;
 				IsBonusShield ();
 			}
             if (p != null && Distance == TakeBonus)
             {
 				Debug.Log("Preso! "+Distance);
-                sc.HandleOnBonusTaken();
+               
                 if(p.PlayerLife<3)
                 p.PlayerLife = p.PlayerLife + LifeToAdd;
                 gc.scoreCounter = gc.scoreCounter + BonusPoints;//aumento lo score
@@ -105,9 +115,10 @@ namespace EH.LPNM
             }
             else if (Distance==NearlyBonus)
             {
-                sc.OnNearBonus();
+                
                 Debug.Log("Quasi vicino "+ Vector3.Distance(this.transform.position, p.transform.position));
 				this.gameObject.SetActive(false);
+
             }               
 			
         }
@@ -118,7 +129,9 @@ namespace EH.LPNM
 		#endregion
 			
 		public void IsBonusShield() {
-				isBonusActive = true;
+			int actualPlayerLife = p.PlayerLife;
+			//p.PlayerLife = actualPlayerLife;
+			 
 
 		}
 				//se collidi con unmalus non perdi ne vita ne moltiplicatore e perdi lo scudo

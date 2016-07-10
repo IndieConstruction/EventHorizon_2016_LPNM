@@ -22,9 +22,11 @@ public class GameController : MonoBehaviour {
 	public static event GameEvent OnGameOver;
 	public static event GameEvent OnNextLevel;
 	//eventi per i bonus
-	public static event GameEvent OnBonusTaken;
-    public static event GameEvent IsMagnetic;
-    public static event GameEvent IsShield;
+    public static event GameEvent IsBonusMagnetic;
+    public static event GameEvent IsBOnusShield;
+	public static event GameEvent IsBonusCoin;
+	public static event GameEvent IsBonusX2;
+	public static event GameEvent IsLifeBonus;
 
     //eventi per la collisione delle lettere
 	public static event GameEvent OnPerfectCollision;
@@ -320,7 +322,7 @@ public class GameController : MonoBehaviour {
 			switch (vote) {
 			case CollisionController.Vote.Perfect :
 				p.GameController_OnPerfectCollision();
-				sc.GameController_OnPerfectCollision();
+
 				Multiplier = Multiplier +2;
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +10000* Multiplier;
@@ -330,7 +332,7 @@ public class GameController : MonoBehaviour {
 				break;
 			case CollisionController.Vote.Good:
 				p.GameController_OnGoodCollision();
-				sc.GameController_OnGoodCollision();
+
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
                 scoreCounter = scoreCounter +5000*Multiplier;
@@ -340,7 +342,6 @@ public class GameController : MonoBehaviour {
 				break;
 			case CollisionController.Vote.Poor:
 				p.GameController_OnPoorCollision();
-				sc.GameController_OnPoorCollision();
 				Multiplier = 0;
 				BonusScore = "POOR!";
 				p.GameController_OnPoorCollision();
@@ -349,7 +350,6 @@ public class GameController : MonoBehaviour {
 			case CollisionController.Vote.wrongLetter:
 				p.GameController_OnWrongLetter();
 				if(b.IsShield == false){
-				sc.GameController_OnWrongLetter();
 				Multiplier = 0;
 				p.PlayerLife --;
 				p.GameController_OnWrongLetter();

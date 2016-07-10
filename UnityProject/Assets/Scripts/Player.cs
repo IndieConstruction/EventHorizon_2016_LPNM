@@ -24,7 +24,7 @@ namespace EH.LPNM{
 		/// Raises the disable event.Da inserire nell'evento di NextLevel
 		/// </summary>
 		public void OnDisable(){
-			GameController.OnBonusTaken -= GameController_OnBonusTaken;
+
 			GameController.OnPlayerDeath -= GameController_OnPlayerDeath;
 			GameController.OnPerfectCollision -= GameController_OnPerfectCollision;
 			GameController.OnGoodCollision -= GameController_OnGoodCollision;
@@ -33,7 +33,7 @@ namespace EH.LPNM{
 			GameController.OnPlayerShape -= GameController_OnPlayerShape;
 		}
 		void OnEnable(){
-			GameController.OnBonusTaken += GameController_OnBonusTaken;
+			
 			GameController.OnPlayerDeath += GameController_OnPlayerDeath;
 			GameController.OnPerfectCollision += GameController_OnPerfectCollision;
 			GameController.OnGoodCollision += GameController_OnGoodCollision;

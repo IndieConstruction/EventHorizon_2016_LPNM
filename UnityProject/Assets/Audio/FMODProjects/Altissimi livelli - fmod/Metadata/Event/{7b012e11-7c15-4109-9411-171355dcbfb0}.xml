@@ -28,9 +28,6 @@
         <relationship name="timeline">
             <destination>{53e6725d-27c6-4c7e-a817-8c639e9fedfc}</destination>
         </relationship>
-        <relationship name="parameters">
-            <destination>{27428140-a33f-4564-a8fe-565894a01374}</destination>
-        </relationship>
         <relationship name="banks">
             <destination>{09e92acf-4288-400e-bbe3-b5e2dd07bb16}</destination>
         </relationship>
@@ -63,22 +60,15 @@
     <object class="MarkerTrack" id="{56999df7-3ccf-4d96-a4c8-27a39671d814}"/>
     <object class="GroupTrack" id="{d7898241-12e4-482c-b246-157aea4d94bf}">
         <relationship name="modules">
-            <destination>{1dca736a-bba1-4e20-a677-d205a1bddf0d}</destination>
+            <destination>{c4e47fec-0b18-4338-b6db-b82c5b4c77b3}</destination>
         </relationship>
         <relationship name="mixerGroup">
             <destination>{8a26da60-499f-4255-ae24-50d88c9d3949}</destination>
         </relationship>
     </object>
-    <object class="Timeline" id="{53e6725d-27c6-4c7e-a817-8c639e9fedfc}"/>
-    <object class="GameParameter" id="{27428140-a33f-4564-a8fe-565894a01374}">
-        <property name="name">
-            <value>setting</value>
-        </property>
-        <property name="maximum">
-            <value>2</value>
-        </property>
+    <object class="Timeline" id="{53e6725d-27c6-4c7e-a817-8c639e9fedfc}">
         <relationship name="modules">
-            <destination>{1dca736a-bba1-4e20-a677-d205a1bddf0d}</destination>
+            <destination>{c4e47fec-0b18-4338-b6db-b82c5b4c77b3}</destination>
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{ac83ae61-95f2-4a88-ae7c-24192c44035d}">
@@ -98,12 +88,12 @@
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{d4899bbd-110f-4f85-b962-46ae91dafb25}"/>
-    <object class="SingleSound" id="{1dca736a-bba1-4e20-a677-d205a1bddf0d}">
+    <object class="SingleSound" id="{c4e47fec-0b18-4338-b6db-b82c5b4c77b3}">
         <property name="start">
             <value>0</value>
         </property>
         <property name="length">
-            <value>0.10000000000000001</value>
+            <value>1.3998185941043084</value>
         </property>
         <relationship name="audioFile">
             <destination>{5d26bde6-fc24-40af-bf1a-2b6236b1ed6e}</destination>

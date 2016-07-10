@@ -7,72 +7,47 @@ namespace EH.LPNM{
 public class SoundController : MonoBehaviour {
 
 	AudioSource audioSource;
-	public AudioClip BonusTaken;
-	public AudioClip GameOver;
-	public AudioClip Win;
-	public AudioClip NextLevel;
-	public AudioClip Perfect;
-	public AudioClip Good;
-	public AudioClip WrongLetter;
-	public AudioClip Poor;
-    public AudioClip NearBonus;
+	public AudioClip MagneticBonus;
+	public AudioClip CoinBonus;
+	public AudioClip LifeBonus;
+	public AudioClip ShieldBonus;
+	public AudioClip PowerUpX2;
 	public Sounds DefaultSound;
 
 	void Awake () {
-		GameController.OnGameOver += HandleOnGameOver;
-		GameController.OnGameWin += HandleOnGameWin;
-		GameController.OnNextLevel += HandleOnNextLevel;
-		GameController.OnBonusTaken += HandleOnBonusTaken;
-		GameController.OnPerfectCollision += GameController_OnPerfectCollision;
-		GameController.OnGoodCollision += GameController_OnGoodCollision;
-		GameController.OnPoorCollision += GameController_OnPoorCollision;
-		GameController.OnWrongLetter += GameController_OnWrongLetter;
+		GameController.IsBonusCoin += GameController_IsBonusCoin;
+		GameController.IsBonusMagnetic += GameController_IsBonusMagnetic;
+		GameController.IsBOnusShield += GameController_IsBOnusShield;
+		GameController.IsBonusX2 += GameController_IsBonusX2;
+		GameController.IsLifeBonus += GameController_IsLifeBonus;
 		}
 
-	public void GameController_OnWrongLetter ()
+	void GameController_IsLifeBonus ()
 	{
-			PlaySound(Sounds.WrongLetter);
+			PlaySound (Sounds.LifeBonus);
 	}
 
-	public void GameController_OnPoorCollision ()
+	void GameController_IsBonusX2 ()
 	{
-			PlaySound(Sounds.Poor);
+			PlaySound (Sounds.PowerUpX2);
 	}
 
-	public void GameController_OnGoodCollision ()
+	void GameController_IsBOnusShield ()
 	{
-			PlaySound(Sounds.Good);
+			PlaySound (Sounds.ShieldBonus);
 	}
 
-	public void GameController_OnPerfectCollision ()
+	void GameController_IsBonusMagnetic ()
 	{
-			PlaySound(Sounds.Perfect);
+			PlaySound (Sounds.MagneticBonus);
 	}
 
-	public void HandleOnBonusTaken ()
+	void GameController_IsBonusCoin ()
 	{
-		PlaySound(Sounds.BonusTaken);
+			PlaySound (Sounds.CoinBonus);
 	}
 
-	void HandleOnNextLevel ()
-	{
-		PlaySound(Sounds.NextLevel);
-	}
 
-	void HandleOnGameWin ()
-	{
-		PlaySound (Sounds.Win);
-	}
-
-	void HandleOnGameOver ()
-	{
-		PlaySound (Sounds.GameOver);
-	}
-
-      public void OnNearBonus()
-        {
-            PlaySound(Sounds.NearBonus);
-        }
 
 
 	// Use this for initialization
@@ -92,48 +67,32 @@ public class SoundController : MonoBehaviour {
 
 	public void PlaySound(Sounds _soundToPlay){
 		switch (_soundToPlay) {
-		case Sounds.GameOver:
-			audioSource.clip = GameOver;
+			case Sounds.MagneticBonus:
+				audioSource.clip = MagneticBonus;
 			break;
-		case Sounds.Win:
-			audioSource.clip = Win;
+			case Sounds.CoinBonus:
+				audioSource.clip = CoinBonus;
 			break;
-		case Sounds.BonusTaken :
-			audioSource.clip = BonusTaken;
+			case Sounds.LifeBonus :
+				audioSource.clip = LifeBonus;
 			break;
-		case Sounds.NextLevel:
-			audioSource.clip = NextLevel;
+			case Sounds.ShieldBonus:
+				audioSource.clip = ShieldBonus;
 			break;
-		case Sounds.Perfect:
-			audioSource.clip = Perfect;
+			case Sounds.PowerUpX2:
+				audioSource.clip = PowerUpX2;
 			break;
-		case Sounds.Good:
-			audioSource.clip = Good;
-			break;
-		case Sounds.Poor:
-			audioSource.clip = Poor;
-			break;
-		case Sounds.WrongLetter:
-			audioSource.clip = WrongLetter;
-			break;
-        case Sounds.NearBonus:
-            audioSource.clip = NearBonus;
-             break;
 		}
 
 		audioSource.Play ();
 	}
 
 	public enum Sounds {
-		Perfect,
-		Good,
-		Poor,
-		WrongLetter,
-		GameOver,
-		Win,
-		BonusTaken,
-		NextLevel,
-        NearBonus,
+		MagneticBonus,
+		CoinBonus,
+		LifeBonus,
+		ShieldBonus,
+		PowerUpX2,
 	}
 }
 }
