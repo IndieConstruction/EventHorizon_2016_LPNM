@@ -110,14 +110,14 @@ namespace EH.LPNM
                 gc.MultiplierLimiter();//non deve superare il 10
 				//foreach (var item in gameObject.GetComponentsInChildren<MeshRenderer>()) 
 				//{ 
-				this.gameObject.SetActive(false);
+				//this.gameObject.SetActive(false);
 				//}
             }
             else if (Distance==NearlyBonus)
             {
                 
                 Debug.Log("Quasi vicino "+ Vector3.Distance(this.transform.position, p.transform.position));
-				this.gameObject.SetActive(false);
+				//this.gameObject.SetActive(false);
 
             }               
 			
@@ -129,8 +129,9 @@ namespace EH.LPNM
 		#endregion
 			
 		public void IsBonusShield() {
+			isBonusActive = true;
 			int actualPlayerLife = p.PlayerLife;
-			//p.PlayerLife = actualPlayerLife;
+	
 			 
 
 		}
