@@ -60,10 +60,13 @@ namespace EH.LPNM
 
 		public void Credits (){
 			fm.MenuPauseInOut();
-
-			BlackWall.SetActive (true);
-			Wall.SetActive (false);
-
+			if (BlackWall.gameObject.active == false) {
+				BlackWall.SetActive (true);
+				Wall.SetActive (false);
+			} else {
+				BlackWall.SetActive (false);
+				Wall.SetActive (true);
+			}
 		}
 		public void Levels (){
 			fm.MenuPauseInOut();
