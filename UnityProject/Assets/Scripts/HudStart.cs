@@ -7,6 +7,7 @@ namespace EH.LPNM
 {
     public class HudStart : MonoBehaviour
     {
+		public GameObject Wall, BlackWall;
 		bool AudioOFF;
         private FMOD_SoundManager fm;
         // Use this for initialization
@@ -60,6 +61,8 @@ namespace EH.LPNM
 		public void Credits (){
 			fm.MenuPauseInOut();
 
+			BlackWall.SetActive (true);
+			Wall.SetActive (false);
 
 		}
 		public void Levels (){
