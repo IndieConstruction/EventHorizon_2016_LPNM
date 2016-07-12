@@ -290,19 +290,21 @@ public class FMOD_SoundManager : MonoBehaviour {
 //        		}
 
         EventInstance EVT_Music_Space = null;
-        public void Music_Space(int Multiplier,int Pause)
+		public void Music_Space(int Multiplier,int Pause, int ScoreCounter)
         {
             if (EVT_Music_Space == null)
             {
                 EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
                 EVT_Music_Space.setParameterValue("pause", Pause);
+				EVT_Music_Space.setParameterValue("ScoreCounter", ScoreCounter);
                 EVT_Music_Space.start();
             }
             else
             {
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
                 EVT_Music_Space.setParameterValue("pause", Pause);
+				EVT_Music_Space.setParameterValue("ScoreCounter", ScoreCounter);
             }
         }
             public void Music_Space_Off()

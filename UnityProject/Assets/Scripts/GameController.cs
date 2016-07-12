@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour {
 			GameController_OnGameStart();
 			fm = FindObjectOfType<FMOD_SoundManager>();
 			fm.Ambience(Multiplier);
-            fm.Music_Space(Multiplier,0);
+			fm.Music_Space(Multiplier,0,scoreCounter);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -294,7 +294,7 @@ public class GameController : MonoBehaviour {
             {
                 StopInputAndTime();
 				fm.MenuPauseInOut();
-                fm.Music_Space(Multiplier, 1);
+				fm.Music_Space(Multiplier, 1,scoreCounter);
                 fm.Ambience_Off();
                 Hd.Pa.gameObject.SetActive(true);
             }
@@ -303,7 +303,7 @@ public class GameController : MonoBehaviour {
                 Hd.Pa.gameObject.SetActive(false);
 				fm.MenuPauseInOut();
              
-                fm.Music_Space(Multiplier, 0);
+				fm.Music_Space(Multiplier, 0,scoreCounter);
                 fm.Ambience(Multiplier);
                 StartInputAndTime();
             }
@@ -325,7 +325,7 @@ public class GameController : MonoBehaviour {
 
 				Multiplier = Multiplier +2;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +10000* Multiplier;
+                scoreCounter = scoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
 				p.GameController_OnPerfectCollision();
 				Hd.UpdateHud();
@@ -335,7 +335,7 @@ public class GameController : MonoBehaviour {
 
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +5000*Multiplier;
+                scoreCounter = scoreCounter +500*Multiplier;
 				BonusScore = "GOOD!";
 				p.GameController_OnGoodCollision();
 				Hd.UpdateHud();
@@ -361,7 +361,7 @@ public class GameController : MonoBehaviour {
 			}
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
 			fm.Ambience(Multiplier);
-			fm.Music_Space (Multiplier, 0);
+			fm.Music_Space (Multiplier, 0,Multiplier );
 		}
 
        public void MultiplierLimiter() {

@@ -87,6 +87,7 @@ namespace EH.LPNM
 			if(other.GetComponent<Player>() == null){
 				return;
 			}
+			//fm.Music_Space (BonusMultiplier, 0,BonusPoints );
 			//fm.PlayerCoin();
 			AudioSource audioSource = GetComponent<AudioSource>();
 			audioSource.PlayOneShot (audioClip);
