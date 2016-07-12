@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{a06d67b7-f0bc-4600-8092-f5666c40db8f}">
+        <property name="assetPath">
+            <value>SpaceWind_def.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>5.7914583333333329</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{23077318-a9ef-408e-a1ef-37eafa106142}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{8f2711c9-8fe5-4a59-b345-e19c4cecc2cb}">
+        <property name="assetPath">
+            <value>Bones3.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{23077318-a9ef-408e-a1ef-37eafa106142}</destination>
+        </relationship>
+    </object>
+</objects>
