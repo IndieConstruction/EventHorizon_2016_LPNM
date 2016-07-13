@@ -87,8 +87,8 @@ namespace EH.LPNM
 			if(other.GetComponent<Player>() == null){
 				return;
 			}
-			//fm.Music_Space (BonusMultiplier, 0,BonusPoints );
-			//fm.PlayerCoin();
+
+
 			AudioSource audioSource = GetComponent<AudioSource>();
 			audioSource.PlayOneShot (audioClip);
 			int Distance = CalculateDistance(Vector3.Distance(this.transform.position, p.transform.position));
@@ -105,10 +105,11 @@ namespace EH.LPNM
                
                 if(p.PlayerLife<3)
                 p.PlayerLife = p.PlayerLife + LifeToAdd;
-                gc.scoreCounter = gc.scoreCounter + BonusPoints;//aumento lo score
+                gc.ScoreCounter = gc.ScoreCounter + BonusPoints;//aumento lo score
                 gc.Multiplier = gc.Multiplier + BonusMultiplier;//aumento del moltiplicatore
                 hd.UpdateHud();//aggiorna l'hud
                 gc.MultiplierLimiter();//non deve superare il 10
+				fm.Music_Space (BonusMultiplier, BonusPoints, 0 );
 				//foreach (var item in gameObject.GetComponentsInChildren<MeshRenderer>()) 
 				//{ 
 				//this.gameObject.SetActive(false);

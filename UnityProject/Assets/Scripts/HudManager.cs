@@ -27,7 +27,7 @@ namespace EH.LPNM
 			HL = FindObjectOfType<HudLevels> ();
 			HC = FindObjectOfType<HudCredits> ();
             p = FindObjectOfType<Player>();
-            ScoreText.text = "Score : " + gc.scoreCounter;
+            ScoreText.text = "Score : " + gc.ScoreCounter;
             MultiplierText.text = "X" + gc.Multiplier;
             PlayerLifeText.text = "Life : " + p.PlayerLife;
             

@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
 	Vector3 posPlayer;
 	float timeToStart= 0.0f;
 	public float StartGame=0; // 
-	public int scoreCounter; // Punteggio del gioco
+	public int ScoreCounter; // Punteggio del gioco
 	public int Score4NextLevel;
 	private string BonusScore; 
 	public float DistanceResult; // Distanza tra il punto di collisone e la lettera
@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour {
 			GameController_OnGameStart();
 			fm = FindObjectOfType<FMOD_SoundManager>();
 			fm.Ambience(Multiplier);
-			fm.Music_Space(Multiplier,0,scoreCounter);
+			fm.Music_Space(Multiplier,ScoreCounter,0);
 		//	TimerXObstacle = 0;
 		//  p = GetComponent<Player>();
 		//	GameTimer = 0;
@@ -156,6 +156,7 @@ public class GameController : MonoBehaviour {
 				timeToStart = timeToStart + Time.deltaTime;
 
 			}
+
 			else {
 				GameIsFreeze= false;
 				iC.enabled=true;
@@ -235,7 +236,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
 	public void EndLevelComplete () {
             //	if(p.PlayerLife<=0){
-          if (scoreCounter >= Score4NextLevel)
+          if (ScoreCounter >= Score4NextLevel)
           {
             Complete = true;
 
@@ -294,7 +295,7 @@ public class GameController : MonoBehaviour {
             {
                 StopInputAndTime();
 				fm.MenuPauseInOut();
-				fm.Music_Space(Multiplier, 1,scoreCounter);
+				fm.Music_Space(Multiplier, ScoreCounter, 1);
                 fm.Ambience_Off();
                 Hd.Pa.gameObject.SetActive(true);
             }
@@ -303,7 +304,7 @@ public class GameController : MonoBehaviour {
                 Hd.Pa.gameObject.SetActive(false);
 				fm.MenuPauseInOut();
              
-				fm.Music_Space(Multiplier, 0,scoreCounter);
+				fm.Music_Space(Multiplier, ScoreCounter,0);
                 fm.Ambience(Multiplier);
                 StartInputAndTime();
             }
@@ -325,7 +326,7 @@ public class GameController : MonoBehaviour {
 
 				Multiplier = Multiplier +2;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +1000* Multiplier;
+                ScoreCounter = ScoreCounter +1000* Multiplier;
 				BonusScore = "PERFECT!";
 				p.GameController_OnPerfectCollision();
 				Hd.UpdateHud();
@@ -335,7 +336,7 @@ public class GameController : MonoBehaviour {
 
                 Multiplier = Multiplier +1;
                 MultiplierLimiter();
-                scoreCounter = scoreCounter +500*Multiplier;
+                ScoreCounter = ScoreCounter +500*Multiplier;
 				BonusScore = "GOOD!";
 				p.GameController_OnGoodCollision();
 				Hd.UpdateHud();
@@ -361,7 +362,7 @@ public class GameController : MonoBehaviour {
 			}
 			Hd.OnCollisionVote(BonusScore, DistanceResult);
 			fm.Ambience(Multiplier);
-			fm.Music_Space (Multiplier, 0,Multiplier );
+			fm.Music_Space (Multiplier, ScoreCounter, 0 );
 		}
 
        public void MultiplierLimiter() {

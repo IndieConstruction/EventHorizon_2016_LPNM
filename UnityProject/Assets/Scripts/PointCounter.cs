@@ -6,7 +6,7 @@ namespace EH.LPNM
     public class PointCounter : MonoBehaviour
     {
         GameController gc;
-        public int Points { get { return gc.scoreCounter; } }
+        public int Points { get { return gc.ScoreCounter; } }
         public int PointsUI { get; set; }
         public Text PointLable;
         public string LablePrefix="Score: ";

@@ -290,21 +290,23 @@ public class FMOD_SoundManager : MonoBehaviour {
 //        		}
 
         EventInstance EVT_Music_Space = null;
-		public void Music_Space(int Multiplier,int Pause, int ScoreCounter)
+		public void Music_Space(int Multiplier, int ScoreCounter,int Pause)
         {
             if (EVT_Music_Space == null)
             {
                 EVT_Music_Space = RuntimeManager.CreateInstance(SND_Music_Space);
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
-                EVT_Music_Space.setParameterValue("pause", Pause);
 				EVT_Music_Space.setParameterValue("ScoreCounter", ScoreCounter);
+				EVT_Music_Space.setParameterValue("pause", Pause);
+			
                 EVT_Music_Space.start();
             }
             else
             {
                 EVT_Music_Space.setParameterValue("Multiplier", Multiplier);
-                EVT_Music_Space.setParameterValue("pause", Pause);
 				EVT_Music_Space.setParameterValue("ScoreCounter", ScoreCounter);
+				EVT_Music_Space.setParameterValue("pause", Pause);
+
             }
         }
             public void Music_Space_Off()
@@ -313,9 +315,6 @@ public class FMOD_SoundManager : MonoBehaviour {
            //EVT_Music_Space.stop(STOP_MODE.IMMEDIATE);
             //EVT_Music_Space.stop();
             //RuntimeManager.PlayOneShot(EVT_Music_Space);
-
-
-
         }
 
         public void Steady()
